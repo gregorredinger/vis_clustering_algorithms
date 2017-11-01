@@ -1,0 +1,1 @@
+Application to help users to systematically explore and compare different clustering algorithms
