@@ -56,6 +56,12 @@
             margin: 0.5em auto;
             border: 1px inset;
         }
+
+        .e-mail:before {
+            content: attr(data-website) "\0040" attr(data-user);
+            unicode-bidi: bidi-override;
+            direction: rtl;
+        }
     </style>
 </head>
 
@@ -68,13 +74,13 @@
 <p>
     Markus Hunner<br/>
     01503441<br/>
-    hunnermarkus@gmail.com
+    <span class="e-mail" data-user="sukramrennuh" data-website="moc.liamg"></span>
 </p>
 
 <p>
     Gregor Redinger<br/>
     00000000 <br/>
-    gregorredinger@gmail.com
+    <span class="e-mail" data-user="regniderrogerg" data-website="moc.liamg"></span>
 </p>
 
 <h2>Project Specification</h2>
