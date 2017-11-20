@@ -352,15 +352,19 @@ He could draw the Coordinates by Hand on a Map, but this Task would be very time
 </p>
 
 <h3>Dashboard 2 - Finding Customers with a high Income that lives in a specific Street </h3>
-<p>
-    The Owner of a local Grocery Store wants to offer his Customers the Option of a 10 Minute Delivery, to compete with Amazon Fresh, that started recently in his City.
+<p>Frank, the Owner of a local Grocery Store wants to offer his Customers the Option of a 10 Minute Delivery, to compete with Amazon Fresh, that started recently in his City.
     Because a 10 Minute Delivery is not possible in the whole City, he plan to restrict his Offer to a specific Street.
     He also thinks that only People with a relatively high Income are willing to pay the Delivery Fee, so he want to limit his Marketing to these Kind of People.
     Thankfully he had a List with the Income and the Residence of all People of his City as Csv. The Problem is to evaluate the List by himself would take way too much time,
     so he decided to use our Application instead.
-    <img src="img/dashboard2_story.png" alt="" width="700px">
-
-
+</p>
+<img src="img/dashboard2_story.png" alt="" width="700px">
+<p>
+    At first he imports his List Data in our Application and adjust the Epsilon and Minpts Parameters. Like the Doctor before, the Tooltip Explanation help him to find
+    the correct Settings. He decided to stick with the default View Settings that shows them Side by Side, because he need both. After analyzing the Tree View (Point 3),
+    he decided to remove all Clusters with a low Income. He only select the Clusters with high Income over a Dropdown Menu (Point 4). The View updates and show the desired Results.
+    Now he searches in the Table View (Point 5) after all Entries with the Street, where he plan to offer his Delivery Service.
+    Because the Table View only Shows the Results of the selected Cluster, he can complete his search in no time.
 </p>
 
 
@@ -379,7 +383,7 @@ He could draw the Coordinates by Hand on a Map, but this Task would be very time
 
 <h3>Webpack</h3>
 <p> We will use Webpack as Module Bundler.  So we can structure our Code in a clean way by modularize it.
-    Webpack will then take care of stitching together all this modules (and their dependencies) into a single file (or group of files) in the correct order. </p>
+    Webpack will then take care of stitching together all this modules (and their dependencies) into a single file in the correct order. </p>
 
 <h3>D3</h3>
 <p>Since D3 is the De-Facto-Standard for building Diagrams in Javascript, we decided to use it as our Tool of Choice. </p>
