@@ -276,6 +276,33 @@
 
 <h2> Interface Design </h2>
 
+<h3>Dashboard 1 </h3>
+<p> This Dashboard consists of three Views. The Histogram View on the Bottom of the Page shows a Reachability-plot.
+    This is a 2D plot, with the ordering of the points on the x-Axis and the reachability distance on the y-Axis.
+    Because points belonging to a cluster have a low reachability distance to their nearest neighbor, the clusters show up as valleys in the reachability plot.  </p>
+
+<p> The Bubble and the Network View provide a better Overview for the Distribution of the Clusters.
+    </p>
+<img src="img/Dashboard_1_Blasen_Netzdarstellung.png" alt="" width="600px">
+
+<p> The Default Setting shows the Bubble and the Network View side by side, but it's also possible to enlarge one of the Views and hide the other.
+    This can be done by using the View Choosing Buttons on the Top of the Page (see Arrow 1).</p>
+
+<p> Another Interaction is to select specific Data in the Histogram via Brushing (see Arrow 3). The Data in the Bubble or Network View gets updated accordingly (see Arrow 2).
+    This interaction allows a fine-grained Analysis of the Data. </p>
+
+<p> It's also possible to adjust the two Parameters of the Optics Algorithm. Nearby Arrow 1 are two numerical Steppers to adjust the Parameters "Min pts" and "Epsilon".
+    The Epsilon Value is used to set a maximal Distance to limit the Complexity of the Algorithm.
+    The "Min pts" Value describes the number of Points required to form a Cluster.</p>
+
+<img src="img/dashboard1_expanded_bubble_view.png" alt="" width="600px">
+
+<h3>Dashboard 2 </h3>
+<img src="img/Dashboard_2.png" alt="" width="600px">
+
+<h3>Dashboard 3 </h3>
+<img src="img/Dashboard_3.png" alt="" width="600px">
+
 
 
 <h2> Implementation Details </h2>
