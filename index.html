@@ -338,12 +338,15 @@ The third Dashboard is focused on showing how similar or not different Clusters 
 <h2> Storyboards </h2>
 
 <h3>Dashboard 1 - Finding the source of a Epidemic </h3>
-A Doctor named John Snow tries to find the Source of a Cholera Epidemic. He creates a list that shows where the infected People live.
-He analysis the Data with our Dashboard and gets an Overview of the Places where a high Number of infected People come from.
+A Doctor named John Snow tries to find the Source of a Cholera Epidemic. He creates a list that shows where the infected People live by there Longitude and Latitude Values.
+He could draw the Coordinates by Hand on a Map, but this Task would be very time-consuming. So he decided to use our Application instead.
 <img src="img/dashboard1_expanded_bubble_view_epidemic analysis.png" alt="" width="700px">
 <p>
-    He analyses every Cluster by brushing over the Histogram. So he get a clearer Overview, because there are many different Clusters and it's hard to
-    identify a possible Epidemic Source when too many Points are on the Map. <br />
+    He imports his List as csv File and adjust the Epsilon and Minpts Parameters. At first he struggled a bit with the Meaning of this Variables, but by hovering over
+    them a tooltip with a detailed explanation pops up.
+    Then he decided that he just need the bubble View and enlarge this View by clicking on the View Selector Button on the top of the Page.
+    After the Application draw all Points on the View, he realized that there are way to many Clusters on the Map to get a good Overview.
+    So he select specific Clusters by brushing over the Histogram, which results in a clearer and easier to read View.
     After examining his collected Data with our Tool he is able to isolate possible Epidemic Sources. He found out that the Epidemic is caused by polluted Water
     and saved the live of many People, thanks to our Dashboard.
 </p>
