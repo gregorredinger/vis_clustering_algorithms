@@ -425,19 +425,30 @@ The third Dashboard is focused on showing how similar or not different Clusters 
 
 <h2> Storyboards </h2>
 
-<h3>Dashboard 1 - Finding the source of a Epidemic </h3>
-A Doctor named John Snow tries to find the Source of a Cholera Epidemic. He creates a list that shows where the infected People live by there Longitude and Latitude Values.
-He could draw the Coordinates by Hand on a Map, but this Task would be very time-consuming. So he decided to use our Application instead.
+<h3>Dashboard 1 - Insights in Students Performance </h3>
+A university Professor named John Snow tries to make sense of the performance of his Students.
+He creates a list with achieved assignment scores of for his courses..
+He could try to spot possible groups of in student's performance by looking at the data in a spreadsheet, but that would be too time consuming.
 <img src="img/dashboard1_expanded_bubble_view_epidemic analysis.png" alt="" width="700px">
 <p>
     He imports his List as csv File and adjust the Epsilon and Minpts Parameters. At first he struggled a bit with the Meaning of this Variables, but by hovering over
     them a tooltip with a detailed explanation pops up.
     Then he decided that he just need the bubble View and enlarge this View by clicking on the View Selector Button on the top of the Page.
-    After the Application draw all Points on the View, he realized that there are way to many Clusters on the Map to get a good Overview.
-    So he select specific Clusters by brushing over the Histogram, which results in a clearer and easier to read View.
-    After examining his collected Data with our Tool he is able to isolate possible Epidemic Sources. He found out that the Epidemic is caused by polluted Water
-    and saved the live of many People, thanks to our Dashboard.
+    After the Application draw all Points on the View, he realized that there are only few, but big Clusters on the Map.
+    It seems that the clusters divide students in bad, average and good performing students.
+    So he select specific Clusters by brushing over the Histogram, which results in a clearer and easier to read View of the better perfoming students.
+    By adjusting the &epsilon;' slider he realizes that this cluster is made up of two subclusters.
 </p>
+<img src="img/Storyboard1/dashboard2_story.png" alt="" width="700px">
+<p>
+    In the Spreadsheet View the original name column with from his score spreadsheet is still accessible, but all the students
+    are marked in the corresponding color of subclusters he selected by combining brushing and the &epsilon;' slider.
+    After recognizing some names in each of the clusters Prof. Snow thinks that his good performing students are divided
+    into full-time students and students who work part time in an IT-related field.
+    He switches back to the bubble view and tries to find more clusters. Possible one or more with students who work in
+    other fields.
+</p>
+
 
 <h3>Dashboard 2 - Finding Customers with a high Income that lives in a specific Street </h3>
 <p>Frank, the Owner of a local Grocery Store wants to offer his Customers the Option of a 10 Minute Delivery, to compete with Amazon Fresh, that started recently in his City.
