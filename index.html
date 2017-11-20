@@ -102,10 +102,11 @@
     In our Project we have the goal to provide a visualization for the OPTICS Clustering Algorithm.
     For a short introduction to the OPTICS algorithm see:
     <a href="https://en.wikipedia.org/wiki/OPTICS_algorithm">OPTICS algorithm - From Wikipedia, the free encyclopedia</a> <br/>
-    The OPTICS algorithm was first published in: <br/>
-    <div><p>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander:
+    The OPTICS algorithm was first published in: </p><br/>
+    <p>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander:
         "OPTICS: Ordering Points To Identify the Clustering Structure."
-        ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60. (1999)</p></div>
+        ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60. (1999)</p>
+<p>
     The paper can be found online at: <br/>
     <a href="http://www.dbs.informatik.uni-muenchen.de/Publikationen/Papers/OPTICS.pdf">http://www.dbs.informatik.uni-muenchen.de/Publikationen/Papers/OPTICS.pdf</a>
 </p>
@@ -160,7 +161,7 @@
 <div>
     <figure>
         <img src="img/exercise_SHEET.PNG" alt="pen-and-paper excercise of the course Scientific Data Management">
-        <figcaption>Fig2. - pen-and-paper excercise given by Prof. Claudia Plant and Martin Perdacher to teach the DBSCAN
+        <figcaption>Fig2. - pen-and-paper exercise given by Prof. Claudia Plant and Martin Perdacher to teach the DBSCAN
             algorithm
         </figcaption>
     </figure>
@@ -179,7 +180,7 @@
     <li>Implement several visual representation of clustering results in 2D euclidean space</li>
     <li>Implement several 2D representation of the resulting cluster hierarchies</li>
     <li>Implement visualizations to compare the similarity of clustering results with different starting parameters</li>
-    <p>Possibly:</p>
+    Possibly:
     <li>Provide a visual representation of the seed list used by OPTICS and how it is maintained by the
         algorithm</li>
     <li>Provide mechanics to reduce the dimensions of the provided feature vectors</li>
@@ -292,7 +293,7 @@
 <div>
     <figure>
         <img src="img/singleGraphs/dendrogramDistanceMatrix.png" alt="Combining Dendrograms and a Heatmap">
-        <figcaption>Graph 7. - Combining Dendrograms and a Heatmap
+        <figcaption>Graph 7. - Combining Dendrograms and a Heatmap (<a href="https://stackoverflow.com/a/23046142">https://stackoverflow.com/a/23046142</a>)
         </figcaption>
     </figure>
 </div>
@@ -468,8 +469,10 @@ He could try to spot possible groups of in student's performance by looking at t
 
 
 <h2> References </h2>
-<cite>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander (1999). OPTICS: Ordering Points To Identify the Clustering Structure. ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60.</cite>
+<p><cite>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander (1999). OPTICS: Ordering Points To Identify the Clustering Structure. ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60.</cite></p>
+<p><cite>Leskovec, J., Rajaraman, A., & Ullman, J. D. (2014). Mining of massive datasets. Cambridge university press.</cite></p>
 <p><cite>Lucidchart. Online-Software für die Erstellung von Flussdiagrammen & Grafiken jeder Art. (2017, October 26). Retrieved November 20, 2017, from https://www.lucidchart.com/pages/de</cite></p>
+<p><cite><a href="https://ufind.univie.ac.at/de/course.html?lv=052813&semester=2017S">052813 VU Scientific Data Management (2017S)</a>  - Course Material</cite></p>
 <h2> Implementation Details </h2>
 
 <h3>Javascript</h3>
@@ -503,19 +506,23 @@ It's also a benefit that we can manage our Dependencies with npm on Client- and 
 <p> As IDE we use Webstorm because it's especially designed for Web Development and very reliable and powerful.</p>
 
 <h2>Future Milestones</h2>
-<p>Minimum Requirements for M3 - Hi-Fi Prototype</p>
+<p>Requirements for M3 providing minimal functionality</p>
 <ul>
-    <li>4-6h - assesing the fitness of already existing OPTICS implementation or writing a own implementation of Optics</li>
+    <li>4h - assesing the fitness of already existing OPTICS implementation or writing a own implementation of Optics</li>
     <li>2h   - reachability plot with colored clusters</li>
     <li>2h   - providing a option to load data from csv or json input</li>
     <li>2h   - representing 2D-Data in an euclidean space</li>
     <li>2h   - representing clustering results in a dendrogram</li>
 </ul>
-<p>Additional Requirements for M3 if possible</p>
+<p>Additional Requirements for M3/M4 resulting from this proposal</p>
 <ul>
     <li>1h - adding a Brush to the reachibility plot</li>
     <li>1h - adding a &epsilon;' slider to the reachability plot</li>
     <li>4h - assesing the fitness of already existing Spreadsheet implementations for data editing</li>
+    <li>1h - representing clusters as a net</li>
+    <li>1h - representing cluster hierarchy as a graph</li>
+    <li>1h - decide on indices to as similarity coefficients</li>
+    <li>2h - Implement Similarity Barchart</li>
 </ul>
 
 <hr>
