@@ -43,7 +43,7 @@ but you can also just download the latest lts version of node from the node.js w
 
 ### USAGE
 
-1. npm update - update package.json Dependencies (only after first download via gitlab)
+1. npm update - update package.json Dependencies (only after first download via gitlab), or when you want to update your Dependencies.
 2. npm run build - updates the js code (bundle.js) whenever changes to the Code are made
 3. npm run server - starts the server
 
