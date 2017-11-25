@@ -64,6 +64,9 @@ not listed in the package.json file. A Source of available Packages can be found
 
 * Scripts for executing Tasks (e.g. tests) can be defined in the file "package.json" under scripts. 
 
+* Don't add the "node_modules" folder or "bundle.js" to git.
+
+
 ### TROUBLESHOOTING
 
 ##### Webpack reports error during module bundling
