@@ -1,7 +1,7 @@
 
 ### INTRODUCTION
 
-Our Project have the Goal to provide a visualization for the OPTICS Clustering Algorithm.
+Our Project has the Goal to provide a visualization for the OPTICS Clustering Algorithm.
 For more Details see https://gregorredinger.github.io/vis_clustering_algorithms/
 
 ### PROJECT STRUCTURE (not final)
