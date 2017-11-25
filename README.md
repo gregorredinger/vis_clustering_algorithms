@@ -33,7 +33,7 @@ For more Details see https://gregorredinger.github.io/vis_clustering_algorithms/
 ```
 
 
-### REQUIREMENTS
+### PREREQUISITES
 
 -node (use latest lts version, i recommend installation via nvm - https://github.com/creationix/nvm/blob/master/README.md,
 but you can also just download the latest lts version of node from the node.js website)
@@ -49,6 +49,20 @@ but you can also just download the latest lts version of node from the node.js w
 
 ! Don't exit the processes "build" & "server" by Typing Strg + C, if you wanna do something in the Terminal, open a new Terminal Window
 
+
+### CONTRIBUTING
+
+* Additional Packages can be installed via "npm install packagename --save", or if
+it's a Package that's only used during development "npm install packagename --save-dev".
+The --save is important because it saves the package to the list of dependencies in
+the package.json File, if it's not included there, the package will not be installed
+automatically by typing "npm update", which is unfortunate if the package is used in
+the Code but the other Contributors have to install it manually, because the package is 
+not listed in the package.json file. A Source of available Packages can be found here: https://www.npmjs.com/
+
+* The Project Pages for the Milestones can be found in the Branch "gh-pages", see https://github.com/gregorredinger/vis_clustering_algorithms/tree/gh-pages
+
+* Scripts for executing Tasks (e.g. tests) can be defined in the file "package.json" under scripts. 
 
 ### TROUBLESHOOTING
 
