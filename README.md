@@ -1,8 +1,8 @@
 
 ### INTRODUCTION
 
-Out Project have the Goal to provide a visualization for the OPTICS Clustering Algorithm.
-For more Details see http://localhost:8080/M2/
+Our Project have the Goal to provide a visualization for the OPTICS Clustering Algorithm.
+For more Details see https://gregorredinger.github.io/vis_clustering_algorithms/
 
 ### PROJECT STRUCTURE (not final)
 
