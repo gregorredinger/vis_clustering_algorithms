@@ -19,6 +19,7 @@
 </header>
 
 <!-- Tabs in navbar of the Application - toggle is done by tabby.js-->
+<!-- TODO: Find better names for view1 & view2 -->
 <ul data-tabs class="tab tab-block tabs">
     <li class="tab-item">
         <a  data-tab href="#config">Config</a>
@@ -35,8 +36,24 @@
 <div data-tabs-content>
     <div data-tabs-pane class="tabs-pane active" id="config">
         <!-- start config tab content-->
-        <p><strong>config</strong></p>
-        <p>put config stuff here</p>
+        <!-- epsilon value chooser-->
+        <form>
+            <p>Epsilon</p>
+            <span class="spinner">
+                <span id="sub-epsilon" class="sub">-</span>
+                <input id="epsilon" type="number" min="0" max="100" value="1">
+                <span id="add-epsilon" class="add">+</span>
+            </span>
+        </form>
+        <!-- minPts value chooser-->
+        <form>
+            <p>MinPts</p>
+            <span class="spinner">
+                <span id="sub-min-pts" class="sub">-</span>
+                <input id="min-pts" type="number" min="0" max="100" value="1">
+                <span id="add-min-pts" class="add">+</span>
+            </span>
+        </form>
         <!-- end config tab content-->
     </div>
     <div data-tabs-pane class="tabs-pane" id="view1">
