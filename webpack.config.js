@@ -28,10 +28,15 @@ module.exports = {
                 // define the specific (here babel) loader
                 loader: "babel-loader",
             },
-            // compile sass to css
+            // compile sass to css and css to style-tag
             {
                 loaders: ["style-loader", "css-loader", "sass-loader"],
                 test: /\.scss$/
+            },
+            // compiles css to style-tag
+            {
+                loaders: ["style-loader", "css-loader"],
+                test: /\.css$/
             }
         ]
     }
