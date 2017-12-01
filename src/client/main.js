@@ -19,3 +19,5 @@ document.getElementById("sub-epsilon").addEventListener("click", () => { config.
 document.getElementById("add-epsilon").addEventListener("click", () => { config.changeConfigValues("epsilon", "plus"); });
 document.getElementById("sub-min-pts").addEventListener("click", () => { config.changeConfigValues("minPts", "minus"); });
 document.getElementById("add-min-pts").addEventListener("click", () => { config.changeConfigValues("minPts", "plus"); });
+
+document.getElementById("file").addEventListener("change", config.loadSelectedFile);

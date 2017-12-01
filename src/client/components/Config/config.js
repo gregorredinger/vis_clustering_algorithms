@@ -1,5 +1,10 @@
 import "./config.scss"
 
+/**
+ * @module Config
+ *
+ * Handles the IO of the config values
+ * */
 export default class {
 
     constructor() {
@@ -34,5 +39,19 @@ export default class {
             alert("Error in 'changeConfigValues': " + e);
         }
     }
+    /**
+     * Load the file from the config upload function, create a text representation via file Reader and parse that text via d3
+     * @param event - event obj that contains a list of files which where added via file api
+     * */
+    loadSelectedFile(event) {
+        let fileReader = new FileReader();
+        fileReader.addEventListener("load", () => {
+            let file = fileReader.result;
+            console.log(file);
+        });
+        fileReader.readAsText(event.target.files[0]);
+    }
+
+
 }
 
