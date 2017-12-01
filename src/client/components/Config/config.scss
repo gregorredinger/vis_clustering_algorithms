@@ -1,10 +1,16 @@
+/**********************
+global config css values
+ ********************/
+
+$padding_between_fields: 2.5rem 0 3rem 0;
+
 
 /**************************
 css for the epsilon & min pts fields
 **************************/
 form {
   margin: auto;
-  padding: 2.5rem 0 2.5rem 0;
+  padding: $padding_between_fields;
   top: 0;
   left: 0;
   bottom: 0;
@@ -81,4 +87,16 @@ span.spinner > .add:hover {
 }
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+
+// calculate button
+#calculate_wrapper {
+  margin: auto;
+  padding: $padding_between_fields;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 50px;
 }
