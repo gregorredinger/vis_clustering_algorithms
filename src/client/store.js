@@ -18,7 +18,10 @@ export default class {
         if(!instance){
             instance = this;
 
-            this.data = {};
+            this.clusters = [];
+            this.plot = [];
+            this.input = {}; // original json from user
+            this.data = [];
             this.epsilon = 1;
             this.minPts = 1;
         }
@@ -33,7 +36,13 @@ export default class {
     print() {
         console.log("EPSILON: " + this.epsilon);
         console.log("MINPTS: " + this.minPts);
-        console.log("DATA: " + this.data);
-
+        console.log("INPUT:");
+        console.log(this.input);
+        console.log("DATA:");
+        console.log(this.data);
+        console.log("PLOT:");
+        console.log(this.plot);
+        console.log("CLUSTERS:");
+        console.log(this.clusters);
     }
 }
