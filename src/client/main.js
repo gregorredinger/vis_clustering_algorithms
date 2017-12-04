@@ -2,6 +2,7 @@
 import Config from "./components/Config/config";
 import Store from "./store"
 import Optics from "./components/opticsAlgo"
+import View1 from "./components/View1/view1.js"
 
 // import npm packages
 import * as d3 from "d3";
