@@ -49,6 +49,10 @@ document.getElementById("calculate").addEventListener("click", (event) => {
         // print data from store
         store.print();
 
+        let view1 = new View1();
+        view1.drawScatterplot();
+
+
 
     } catch(e) {
         alert(e);
