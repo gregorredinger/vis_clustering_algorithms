@@ -84,6 +84,18 @@ export default class {
 
         circle.exit().remove();
 
+
+        d3.interval(TestUpdate, 1000);
+
+        function TestUpdate(){
+            xScale.domain([0, Math.floor((Math.random() * 10000) + 10)]);
+
+            scatterplot.select(".x")
+                .transition()
+                .call(xAxis);
+
+        }
+
     }
 
 
