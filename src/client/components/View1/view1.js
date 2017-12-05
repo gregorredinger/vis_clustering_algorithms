@@ -100,8 +100,34 @@ export default class {
 
 
     drawHistogram() {
+        // create x scale
+        var x = d3.scaleLinear()
+            .range([0, width])
+            .domain([0, 100]);
 
+// crate x_axis from scale x
+        var x_axis = d3.axisBottom()
+            .scale(x);
+
+// draw the axis
+        d3.select("#view1_histogram").append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0, " + height / 2 + ")")
+            .call(x_axis);
+
+
+// what to do if I want to update the drawn axis x_axis ?
+        function update(){
+            // first manipulate the existing objects and update them
+            // x_axis already uses the object x, just update the object x with the help of its functions
+            x.domain([0, random(10, 10000)]);
+
+            // redraw the update axis via callback. Calling x_axis forces x_axis to call it's domain and its other members
+            d3.select(".x")
+                .call(x_axis);
+        }
     }
+
 
     drawNetworkGraph() {
 

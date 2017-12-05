@@ -15,6 +15,8 @@ module.exports = {
     // this creates always a new bundle.js file when changes to the js code are made
     watch: true,
 
+    devtool: 'eval-source-map',
+
     // webpack can thread any type of file as a module and add it to bundle.js (even css)
     module: {
         loaders: [
