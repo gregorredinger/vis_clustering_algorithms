@@ -54,9 +54,9 @@ document.getElementById("calculate").addEventListener("click", (event) => {
         // print data from store
         store.print();
 
+        view1.drawScatterplot();
 
-        view1.drawScatterplot(store.newDataLoaded);
-
+        // set to false after start of application
         store.newDataLoaded = false;
 
 

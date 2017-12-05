@@ -15,6 +15,10 @@ export default class {
     }
 
 
+    /**
+     * renders scatterplot to dom
+     * if create or update should be triggered is decided by the value store.newDataLoaded {boolean}
+     * */
     drawScatterplot() {
 
         let margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -90,16 +94,15 @@ export default class {
 
 
         function update(){
-            xScale.domain([0, Math.floor((Math.random() * 10000) + 10)]);
+            //xScale.domain([0, Math.floor((Math.random() * 10000) + 10)]);
 
             scatterplot.select(".x")
                 .transition()
                 .call(xAxis);
         }
 
+        // first start trigger create, else trigger update
         this.store.newDataLoaded ? create() : update();
-
-
 
     }
 
