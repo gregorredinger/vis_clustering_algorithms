@@ -37,6 +37,7 @@ export default class {
         xScale.domain([d3.min(this.store.data, xValue)-1, d3.max(this.store.data, xValue)+1]);
         yScale.domain([d3.min(this.store.data, yValue)-1, d3.max(this.store.data, yValue)+1]);
 
+
         // add scatterplot svg
         let scatterplot = d3.select("#view1_scatterplot").select("svg")
             .attr("width", width + margin.left + margin.right)
@@ -44,34 +45,37 @@ export default class {
             .select("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        // y-axis
-        scatterplot.select("g:nth-child(2)")
-            .attr("class", "y axis")
-            .call(yAxis)
-            .enter().append("text")
-            .attr("class", "label")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .text("y")
-            .attr("fill", "black");
+        function create() {
 
-        // x-axis
-        scatterplot.select("g:nth-child(1)")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis)
-            .enter().append("text")
-            .attr("class", "label")
-            .attr("x", width + 10)
-            .attr("y", -10)
-            .style("text-anchor", "end")
-            .text("x")
-            .attr("fill", "black");
+            // y-axis
+            scatterplot.select("g:nth-child(2)")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .enter().append("text")
+                .attr("class", "label")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("y")
+                .attr("fill", "black");
+
+            // x-axis
+            scatterplot.select("g:nth-child(1)")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                .enter().append("text")
+                .attr("class", "label")
+                .attr("x", width + 10)
+                .attr("y", -10)
+                .style("text-anchor", "end")
+                .text("x")
+                .attr("fill", "black");
+        }
 
 
-
+        // draw the dots in the scatterplot (its not necessary to put it in create or update because enter and merge, exit handle update?? But iam not sure ??? at least it seems to work so far...)
         let circle = scatterplot.selectAll("circle")
             .data(this.store.data);
 
@@ -85,49 +89,27 @@ export default class {
         circle.exit().remove();
 
 
-        d3.interval(TestUpdate, 1000);
-
-        function TestUpdate(){
+        function update(){
             xScale.domain([0, Math.floor((Math.random() * 10000) + 10)]);
 
             scatterplot.select(".x")
                 .transition()
                 .call(xAxis);
-
         }
+
+        this.store.newDataLoaded ? create() : update();
+
+
+
+    }
+
+    updateScatterplot() {
 
     }
 
 
     drawHistogram() {
-        // create x scale
-        var x = d3.scaleLinear()
-            .range([0, width])
-            .domain([0, 100]);
-
-// crate x_axis from scale x
-        var x_axis = d3.axisBottom()
-            .scale(x);
-
-// draw the axis
-        d3.select("#view1_histogram").append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0, " + height / 2 + ")")
-            .call(x_axis);
-
-
-// what to do if I want to update the drawn axis x_axis ?
-        function update(){
-            // first manipulate the existing objects and update them
-            // x_axis already uses the object x, just update the object x with the help of its functions
-            x.domain([0, random(10, 10000)]);
-
-            // redraw the update axis via callback. Calling x_axis forces x_axis to call it's domain and its other members
-            d3.select(".x")
-                .call(x_axis);
-        }
     }
-
 
     drawNetworkGraph() {
 

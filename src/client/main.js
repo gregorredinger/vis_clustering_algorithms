@@ -53,7 +53,11 @@ document.getElementById("calculate").addEventListener("click", (event) => {
 
         // print data from store
         store.print();
-        view1.drawScatterplot();
+
+
+        view1.drawScatterplot(store.newDataLoaded);
+
+        store.newDataLoaded = false;
 
 
     } catch(e) {

@@ -18,6 +18,8 @@ export default class {
         if(!instance){
             instance = this;
 
+            this.newDataLoaded = true; // indicates if if create (true) or update (false) should be called in the view diagrams
+
             this.clusters = [];
             this.plot = [];
             this.input = {}; // original json from user
