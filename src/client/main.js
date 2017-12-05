@@ -18,6 +18,11 @@ tabby.init();
 let store = new Store();
 
 /*
+* Views
+* */
+let view1 = new View1();
+
+/*
 * Config Event Handlers
 * **/
 let config = new Config();
@@ -48,10 +53,7 @@ document.getElementById("calculate").addEventListener("click", (event) => {
 
         // print data from store
         store.print();
-
-        let view1 = new View1();
         view1.drawScatterplot();
-
 
 
     } catch(e) {

@@ -21,6 +21,9 @@ export default class {
         this.store.clusters = optics.run(this.store.input, 2, 2);
         this.store.plot = optics.getReachabilityPlot();
 
+        // make sure the store.data is empty before adding the elements of the new calculation
+        this.store.data = [];
+
         for(let plotEntry of this.store.plot) {
             this.store.data.push({
                 // plotEntry[0] == returns the input entry, the current plot entry is referring to

@@ -12,16 +12,15 @@
   background-color: #5755D9;
 }
 
-.view1_scatterplot {
+#view1_scatterplot {
 }
 
-.view1_histogram {
+#view1_histogram {
   // defines the elements range from line to line, so we can position the items anywhere we like in the grid.
   grid-area: 2 / 1 / 3 / 3; // grid-row-start - grid-column-start - grid-row-end -grid-column-end
-
 }
 
-.view1_network_graph {
+#view1_network_graph {
 }
 
 
