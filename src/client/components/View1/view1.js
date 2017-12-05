@@ -99,27 +99,14 @@ export default class {
         let scatterplot = d3.select("#view1_scatterplot").select("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
-            .append("g")
+            .select("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        // x-axis
-        scatterplot.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis)
-            .append("text")
-            .attr("class", "label")
-            .attr("x", width + 10)
-            .attr("y", -10)
-            .style("text-anchor", "end")
-            .text("x")
-            .attr("fill", "black");
-
         // y-axis
-        scatterplot.append("g")
+        scatterplot.select("g:nth-child(2)")
             .attr("class", "y axis")
             .call(yAxis)
-            .append("text")
+            .enter().append("text")
             .attr("class", "label")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
@@ -127,6 +114,20 @@ export default class {
             .style("text-anchor", "end")
             .text("y")
             .attr("fill", "black");
+
+        // x-axis
+        scatterplot.select("g:nth-child(1)")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .enter().append("text")
+            .attr("class", "label")
+            .attr("x", width + 10)
+            .attr("y", -10)
+            .style("text-anchor", "end")
+            .text("x")
+            .attr("fill", "black");
+
 
 
         let circle = scatterplot.selectAll("circle")
