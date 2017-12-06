@@ -13,6 +13,7 @@ import "Tabby/dist/css/tabby.min.css";
 // initialize tab manager
 tabby.init();
 
+
 /*
 * store
 * **/
@@ -22,6 +23,7 @@ let store = new Store();
 * Views
 * */
 let view1 = new View1();
+let view2 = new View2();
 
 /*
 * Config Event Handlers
@@ -56,6 +58,8 @@ document.getElementById("calculate").addEventListener("click", (event) => {
         store.print();
 
         view1.drawScatterplot();
+
+        view2.drawSpreadsheet();
 
         // set to false after start of application
         store.newDataLoaded = false;
