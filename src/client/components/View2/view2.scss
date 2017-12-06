@@ -1,0 +1,18 @@
+.view2 {
+  display: grid; /* enable grid for view1 items (the three graphs) */
+  grid-template-columns: auto auto; /* number of columns and size*/
+  grid-template-rows: 55vh 30vh; /* height of the rows, every entry is a new row line e.g. 1 entry 1 line, 2 entries 2 lines,... */
+  grid-gap: 0.5vw; /* first: grid-column-gap, second: grid-row-gap, or if equal write just 1 value*/
+
+  color: white;
+
+}
+
+.view2_item {
+  background-color: #5755D9;
+}
+
+#view2_histogram {
+  // defines the elements range from line to line, so we can position the items anywhere we like in the grid.
+  grid-area: 2 / 1 / 3 / 3; // grid-row-start - grid-column-start - grid-row-end -grid-column-end
+}
