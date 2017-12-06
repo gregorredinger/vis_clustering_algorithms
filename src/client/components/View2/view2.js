@@ -27,6 +27,7 @@ export default class {
     drawSpreadsheet() {
 
         let hotElement = document.querySelector('#view2_spreadsheet'); // node where the spreadsheet gets inserted
+        let hotElementContainer = hotElement.parentNode; // necessary for drawing the spreadsheet (if this value is not there, the spreadsheet is not visible)
         let hotSettings = {
             data: this.store.data,
             // define which properties of the passed data object should be inserted
