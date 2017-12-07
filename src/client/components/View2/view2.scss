@@ -9,7 +9,7 @@
 }
 
 .view2_item {
-  background-color: #5755D9;
+  background-color: #eeeeee;
   overflow: hidden;
 }
 
@@ -20,4 +20,25 @@
 
 #view2_spreadsheet {
   color: black; // per default the handsontable spreadsheet color seems to be white, which is unfortunate because the table background is also white...
+}
+
+#view2_tree {
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+  }
+
+  .node text { font: 12px sans-serif; }
+
+  .node--internal text {
+    text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  }
+
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+  }
+
 }
