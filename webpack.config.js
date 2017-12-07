@@ -16,7 +16,7 @@ module.exports = {
     watch: true,
 
     // enable source maps for easier debugging (DONT USE THIS IN PRODUCTION)
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
 
     // webpack can thread any type of file as a module and add it to bundle.js (even css)
     module: {

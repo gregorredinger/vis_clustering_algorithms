@@ -58,7 +58,7 @@ document.getElementById("calculate").addEventListener("click", (event) => {
         store.print();
 
         view1.drawScatterplot();
-
+        view1.drawReachabilityPlot();
         view2.drawSpreadsheet();
 
         // set to false after start of application
@@ -66,6 +66,6 @@ document.getElementById("calculate").addEventListener("click", (event) => {
 
 
     } catch(e) {
-        alert(e);
+        (console.error || console.log).call(console, e.stack || e);
     }
 });
