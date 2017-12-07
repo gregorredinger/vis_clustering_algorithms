@@ -1,6 +1,7 @@
 import "./view1.scss"
 import Store from "../../store"
 import * as d3 from "d3";
+import ReachabilityPlot from "./reachabilityPlot";
 
 /**
  * @module View1
@@ -107,14 +108,54 @@ export default class {
     }
 
     updateScatterplot() {
-
     }
 
 
-    drawHistogram() {
+    drawReachabilityPlot() {
+        const reachabilityPlot = new ReachabilityPlot(
+            document.querySelector('#view1_histogram')
+        )
     }
 
     drawNetworkGraph() {
 
     }
+
+}
+
+export function highlight(datum){
+
+    d3.selectAll("circle")
+        .data(new Store().data)
+        .filter(function(d){
+            return d === datum;
+        })
+        .style('fill', '#ff7f0e')
+    ;
+
+    d3.selectAll("rect")
+        .data(new Store().data)
+        .filter(function(d){
+            return d === datum;
+        })
+        .style('fill', '#ff7f0e')
+    ;
+}
+
+export function unhighlight(datum){
+    d3.selectAll("circle")
+        .data(new Store().data)
+        .filter(function(d){
+            return d === datum;
+        })
+        .style('fill', '#6670e5')
+    ;
+
+    d3.selectAll("rect")
+        .data(new Store().data)
+        .filter(function(d){
+            return d === datum;
+        })
+        .style('fill', '#6670e5')
+    ;
 }
