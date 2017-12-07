@@ -60,6 +60,7 @@ document.getElementById("calculate").addEventListener("click", (event) => {
         view1.drawScatterplot();
         view1.drawReachabilityPlot();
         view2.drawSpreadsheet();
+        view2.drawTree();
 
         // set to false after start of application
         store.newDataLoaded = false;
