@@ -29,7 +29,7 @@ export default class {
                 // plotEntry[0] == returns the input entry, the current plot entry is referring to
                 x: this.store.input[plotEntry[0]][0],
                 y: this.store.input[plotEntry[0]][1],
-                reachabilityDistance: plotEntry[1],
+                reachabilityDistance:  plotEntry[1] || this.store.epsilon,
                 name: plotEntry[0], // TODO: give the Point a better name
                 color: "" // TODO: implement color cluster assignment
             });
