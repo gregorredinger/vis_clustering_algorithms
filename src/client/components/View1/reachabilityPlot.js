@@ -17,8 +17,8 @@ export default class ReachabilityPlot {
 
     draw() {
         // define width, height and margin
-        this.width = this.element.offsetWidth;
-        this.height = this.width / 4;
+        this.width = this.element.offsetWidth * 2;
+        this.height = this.element.offsetHeight;
         this.margin = {
             top: 20,
             right: 75,
@@ -27,7 +27,7 @@ export default class ReachabilityPlot {
         };
 
         // set up parent element and SVG
-        // this.element.innerHTML = ''; this removes the eps-Slider!
+        // this.element.innerHTML = ''; TODO: this removes the eps-Slider!
         const svg = d3.select(this.element).append('svg');
         svg.attr('width',  this.width);
         svg.attr('height', this.height);
@@ -60,7 +60,8 @@ export default class ReachabilityPlot {
         // create and append axis elements
         // this is all pretty straightforward D3 stuff
         const xAxis = d3.axisBottom()
-            .scale(this.xScale);
+            .scale(this.xScale)
+            .tickValues(this.xScale.domain().filter(function(d, i) { return !(i % 20); }));
 
         const yAxis = d3.axisLeft()
             .scale(this.yScale);
