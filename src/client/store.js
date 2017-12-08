@@ -24,8 +24,8 @@ export default class {
             this.plot = [];
             this.input = {}; // original json from user
             this.data = [];
-            this.epsilon = 1;
-            this.minPts = 1;
+            this.epsilon = 2;
+            this.minPts = 2;
         }
         return instance;
     }
