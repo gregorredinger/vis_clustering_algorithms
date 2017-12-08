@@ -114,7 +114,8 @@ export default class {
     drawReachabilityPlot() {
         const reachabilityPlot = new ReachabilityPlot(
             document.querySelector('#view1_histogram')
-        )
+        );
+        setupEpsSlider();
     }
 
     drawNetworkGraph() {
@@ -158,4 +159,23 @@ export function unhighlight(datum){
         })
         .style('fill', '#6670e5')
     ;
+}
+
+function setupEpsSlider() {
+    let range = document.getElementById("eps-slider"),
+        value = document.getElementById("eps-value");
+    let yaxis = document.getElementById("view1_histogram")
+        .getElementsByClassName("y axis").item(0),
+        xaxis = document.getElementById("view1_histogram")
+            .getElementsByClassName("x axis").item(0);
+
+
+    range.setAttribute("max", new Store().epsilon);
+    range.setAttribute("value", new Store().epsilon);
+    range.style.height = yaxis.getBoundingClientRect().height + "px";
+    range.style.marginBottom = xaxis.getBoundingClientRect().height + 10 + "px";
+
+    range.addEventListener('input', function(){
+        value.innerHTML = this.value;
+    });
 }

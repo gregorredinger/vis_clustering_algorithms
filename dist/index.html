@@ -42,7 +42,7 @@
             <p>Epsilon</p>
             <span class="spinner">
                 <span id="sub-epsilon" class="sub">-</span>
-                <input id="epsilon" type="number" min="0" max="100" value="1">
+                <input id="epsilon" type="number" min="0" max="100" value="2">
                 <span id="add-epsilon" class="add">+</span>
             </span>
         </form>
@@ -51,7 +51,7 @@
             <p>MinPts</p>
             <span class="spinner">
                 <span id="sub-min-pts" class="sub">-</span>
-                <input id="min-pts" type="number" min="0" max="100" value="1">
+                <input id="min-pts" type="number" min="0" max="100" value="2">
                 <span id="add-min-pts" class="add">+</span>
             </span>
         </form>
@@ -79,7 +79,11 @@
                 </svg>
             </div>
             <div id="view1_histogram" class="view1_item">
-                put histogram here...
+                <span id="eps-value"></span>
+                <div class="range-slider">
+                    <input class="input-range" id="eps-slider" orient="vertical" type="range" step="0.1" value="0" min="0" max="0">
+
+                </div>
             </div>
             <div id="view1_network_graph" class="view1_item">
                 put network graph here...

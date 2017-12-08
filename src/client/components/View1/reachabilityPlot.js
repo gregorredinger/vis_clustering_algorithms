@@ -27,7 +27,7 @@ export default class ReachabilityPlot {
         };
 
         // set up parent element and SVG
-        this.element.innerHTML = '';
+        // this.element.innerHTML = ''; this removes the eps-Slider!
         const svg = d3.select(this.element).append('svg');
         svg.attr('width',  this.width);
         svg.attr('height', this.height);
