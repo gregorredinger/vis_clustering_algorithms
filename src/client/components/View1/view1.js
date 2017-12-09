@@ -89,7 +89,15 @@ export default class {
             .merge(circle)
             .attr("cx", xMap)
             .attr("cy", yMap)
-            .style("fill", d => d.color);
+            .style("fill", d => d.color)
+            .on('mouseover', function(point){
+                highlight(point);
+            })
+            .on('mouseout', function(point){
+                unhighlight(point);
+            })
+
+
 
         circle.exit().remove();
 
@@ -127,21 +135,22 @@ export default class {
 
 export function highlight(datum){
 
+    let darkerColor = d => d3.color(d.color).darker().toString();
+
+
     d3.selectAll("circle")
         .data(new Store().data)
         .filter(function(d){
             return d === datum;
         })
-        .style('fill', '#ff7f0e')
-    ;
+        .style('fill', darkerColor);
 
     d3.selectAll("rect")
         .data(new Store().data)
         .filter(function(d){
             return d === datum;
         })
-        .style('fill', '#ff7f0e')
-    ;
+        .style('fill', darkerColor);
 }
 
 export function unhighlight(datum){
@@ -190,7 +199,7 @@ function colorCluster(newEps) {
 
     let colors = d3.scaleOrdinal().range(d3.schemeCategory20),
         currentColorNumber = -1,
-        noiseColor = "#444444",
+        noiseColor = "#d9d9d9",
         inValley = false;
 
     data.forEach( function (currentPoint, idx) {
