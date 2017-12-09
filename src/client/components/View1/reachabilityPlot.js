@@ -40,6 +40,7 @@ export default class ReachabilityPlot {
         this.createScales();
         this.addAxes();
         this.addBars();
+        this.addEpsLine(this.store.epsilon);
     }
 
     createScales() {
@@ -84,7 +85,7 @@ export default class ReachabilityPlot {
             .data(this.data)
             .enter()
             .append('rect')
-            .style('fill', '#6670e5')
+            .style('fill', function(d){return d.color})
             .attr('x', function(d, idx){return _this.xScale(idx);})
             .attr('width', this.xScale.bandwidth())
             .attr('height', function(d){
@@ -97,6 +98,17 @@ export default class ReachabilityPlot {
             .on('mouseout', function(point){
                 unhighlight(point);
             });
+
+    }
+
+    addEpsLine(yPos) {
+
+        this.plot.append("g")
+                .attr("transform", "translate(0, "+this.yScale(yPos)+")")
+                .append("line")
+                .attr("x2", this.width - this.margin.left - this.margin.right)
+                .style("stroke", "#c80032")
+                .style("stroke-width", "3px")
 
     }
 
