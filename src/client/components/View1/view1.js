@@ -89,7 +89,7 @@ export default class {
             .merge(circle)
             .attr("cx", xMap)
             .attr("cy", yMap)
-            .style("fill", "red");
+            .style("fill", d => d.color);
 
         circle.exit().remove();
 
@@ -190,7 +190,7 @@ function colorCluster(newEps) {
 
     let colors = d3.scaleOrdinal().range(d3.schemeCategory20),
         currentColorNumber = -1,
-        noiseColor = "#ffff00",
+        noiseColor = "#444444",
         inValley = false;
 
     data.forEach( function (currentPoint, idx) {

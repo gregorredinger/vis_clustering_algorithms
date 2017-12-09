@@ -461,8 +461,9 @@ document.getElementById("calculate").addEventListener("click", (event) => {
         // print data from store
         store.print();
 
-        view1.drawScatterplot();
+
         view1.drawReachabilityPlot();
+        view1.drawScatterplot();
         view2.drawSpreadsheet();
         view2.drawTree();
 

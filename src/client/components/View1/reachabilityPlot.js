@@ -17,7 +17,7 @@ export default class ReachabilityPlot {
 
     draw() {
         // define width, height and margin
-        this.width = this.element.offsetWidth * 2;
+        this.width = window.innerWidth *0.9;
         this.height = this.element.offsetHeight;
         this.margin = {
             top: 20,
