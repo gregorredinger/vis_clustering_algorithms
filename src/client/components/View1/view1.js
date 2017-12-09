@@ -150,7 +150,9 @@ export function unhighlight(datum){
         .filter(function(d){
             return d === datum;
         })
-        .style('fill', '#6670e5')
+        .style('fill', function (d) {
+            return d.color;
+        })
     ;
 
     d3.selectAll("rect")
@@ -158,7 +160,9 @@ export function unhighlight(datum){
         .filter(function(d){
             return d === datum;
         })
-        .style('fill', '#6670e5')
+        .style('fill', function (d) {
+            return d.color;
+        })
     ;
 }
 
