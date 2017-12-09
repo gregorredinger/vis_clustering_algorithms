@@ -112,6 +112,7 @@ export default class {
 
 
     drawReachabilityPlot() {
+        colorCluster(this.store.epsilon);
         const reachabilityPlot = new ReachabilityPlot(
             document.querySelector('#view1_histogram')
         );
@@ -178,4 +179,53 @@ function setupEpsSlider() {
     range.addEventListener('input', function(){
         value.innerHTML = this.value;
     });
+}
+
+function colorCluster(newEps) {
+    let data = new Store().data;
+
+    let colors = d3.scaleOrdinal().range(d3.schemeCategory20),
+        currentColorNumber = -1,
+        noiseColor = "#ffff00",
+        inValley = false;
+
+    data.forEach( function (currentPoint, idx) {
+        let nextPoint = data[idx+1];
+        // in case we reached the last point there is nothing to compare to we can just finish the loop.
+        if(!nextPoint) {
+            if(currentPoint.reachabilityDistance >= newEps)  currentPoint.color = noiseColor;
+            else currentPoint.color = colors(currentColorNumber);
+            return;
+        }
+
+        let currentReachabilityDist = (currentPoint.reachabilityDistance < newEps) ? currentPoint.reachabilityDistance : newEps,
+            nextPointReachabilityDist = (nextPoint.reachabilityDistance < newEps) ? nextPoint.reachabilityDistance : newEps;
+
+        if(currentReachabilityDist === newEps) inValley = false;
+
+        if(inValley) {
+            // if we are in a valley, just go through all the points and color them with the current clusterColor
+            currentPoint.color = colors(currentColorNumber);
+        } else {
+
+            // we are not in valley. we have to check if we are iterating through noise or reached the start of a valley
+            if (currentReachabilityDist === newEps && nextPointReachabilityDist < currentReachabilityDist ) {
+                // we found a new valley - get a new color
+                currentColorNumber++;
+                currentPoint.color = colors(currentColorNumber);
+                inValley = true;
+            } else if (currentReachabilityDist === newEps && nextPointReachabilityDist === newEps) {
+                // we found a noise point
+                currentPoint.color = noiseColor;
+
+            } else {
+                console.log("!!! No color assigend to point: ");
+                console.log(currentPoint);
+            }
+
+        }
+
+
+    })
+
 }

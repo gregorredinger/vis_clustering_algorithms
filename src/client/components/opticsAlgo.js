@@ -18,7 +18,9 @@ export default class {
         // call optics algorithm here...
         let optics = new clustering.OPTICS();
         // parameters: 2 - neighborhood radius, 2 - number of points in neighborhood to form a cluster
-        this.store.clusters = optics.run(this.store.input, 2, 2);
+        // TODO: remove debugging msg
+        console.log("Optics called with eps: " + this.store.epsilon + " and minPts: " + this.store.minPts);
+        this.store.clusters = optics.run(this.store.input, this.store.epsilon, this.store.minPts);
         this.store.plot = optics.getReachabilityPlot();
 
         // make sure the store.data is empty before adding the elements of the new calculation
