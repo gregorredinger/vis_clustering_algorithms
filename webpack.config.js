@@ -15,8 +15,8 @@ module.exports = {
     // this creates always a new bundle.js file when changes to the js code are made
     watch: true,
 
-    // enable source maps for easier debugging (DONT USE THIS IN PRODUCTION)
-    //devtool: 'source-map',
+    // enable source maps for easier debugging (DONT USE THIS IN PRODUCTION) @see http://cheng.logdown.com/posts/2016/03/25/679045
+    devtool: 'cheap-module-eval-source-map',
 
     // webpack can thread any type of file as a module and add it to bundle.js (even css)
     module: {

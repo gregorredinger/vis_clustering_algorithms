@@ -11,9 +11,9 @@ import * as d3 from "d3";
 export default class {
 
     constructor() {
-        // calculate the size of the parent node where the Spreadsheet gets inserted
-        this.widthOfSpreadsheetContainer = document.getElementById('view2_spreadsheet').parentNode.getBoundingClientRect().width;
-        this.heightOfSpreadsheetContainer = document.getElementById('view2_spreadsheet').parentNode.getBoundingClientRect().height;
+        // calculate the size of the parent node where the Spreadsheet and the treemap gets inserted
+        this.widthOfContainer = document.getElementById('view2_spreadsheet').parentNode.getBoundingClientRect().width;
+        this.heightOfContainer = document.getElementById('view2_spreadsheet').parentNode.getBoundingClientRect().height;
         this.store = new Store();
 
     }
@@ -56,9 +56,9 @@ export default class {
                 }
             ],
             stretchH: 'all',
-            width: this.widthOfSpreadsheetContainer, // gets pre-calculated in the constructor, takes a integer value
+            width: this.widthOfContainer, // gets pre-calculated in the constructor, takes a integer value
             autoWrapRow: true,
-            height: this.heightOfSpreadsheetContainer, // gets pre-calculated in the constructor, takes a integer value
+            height: this.heightOfContainer, // gets pre-calculated in the constructor, takes a integer value
             maxRows: 22,
             rowHeaders: true,
             // define the names of the column headers
@@ -87,28 +87,37 @@ export default class {
                             { "name": "Daughter of A" }
                         ]
                     },
-                    { "name": "Level 2: B" }
+                    {
+                        "name": "Level 2: B",
+                        "children": [
+                            { "name": "Son of A" },
+                            { "name": "Daughter of A" },
+                            { "name": "Son of A" },
+                            { "name": "Daughter of A" }
+                        ]
+                    }
+
                 ]
             };
 
-// set the dimensions and margins of the diagram
+        // set the dimensions and margins of the diagram
         let margin = {top: 40, right: 90, bottom: 50, left: 90},
-            width = 660 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            width = this.widthOfContainer - margin.left - margin.right,
+            height = this.heightOfContainer - margin.top - margin.bottom;
 
-// declares a tree layout and assigns the size
+        // declares a tree layout and assigns the size
         let treemap = d3.tree()
             .size([width, height]);
 
-//  assigns the data to a hierarchy using parent-child relationships
+        //  assigns the data to a hierarchy using parent-child relationships
         let nodes = d3.hierarchy(treeData);
 
-// maps the node data to the tree layout
+        // maps the node data to the tree layout
         nodes = treemap(nodes);
 
-// append the svg obgect to the body of the page
-// appends a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
+        // append the svg obgect to the body of the page
+        // appends a 'group' element to 'svg'
+        // moves the 'group' element to the top left margin
         let svg = d3.select("#view2_tree").append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom),
@@ -116,7 +125,7 @@ export default class {
                 .attr("transform",
                     "translate(" + margin.left + "," + margin.top + ")");
 
-// adds the links between the nodes
+        // adds the links between the nodes
         let link = g.selectAll(".link")
             .data( nodes.descendants().slice(1))
             .enter().append("path")
@@ -128,7 +137,7 @@ export default class {
                     + " " + d.parent.x + "," + d.parent.y;
             });
 
-// adds each node as a group
+        // adds each node as a group
         let node = g.selectAll(".node")
             .data(nodes.descendants())
             .enter().append("g")
@@ -138,16 +147,76 @@ export default class {
             .attr("transform", function(d) {
                 return "translate(" + d.x + "," + d.y + ")"; });
 
-// adds the circle to the node
+        // adds the circle to the node
         node.append("circle")
             .attr("r", 10);
 
-// adds the text to the node
+        // adds the text to the node
         node.append("text")
             .attr("dy", ".35em")
             .attr("y", function(d) { return d.children ? -20 : 20; })
             .style("text-anchor", "middle")
             .text(function(d) { return d.data.name; });
+
+        this.createTreeData();
     }
+
+    createTreeData() {
+
+        let clusterContainer = {};
+        let levelContainer = {};
+        let level = 1;
+        let currentClusterToFill = 0;
+        let epsilonMin = 0;
+        let epsilonMax = 0.2;
+
+        while(epsilonMax < this.store.epsilon) {
+
+            let data = this.store.data.filter( (d) => {
+                return d.reachabilityDistance > epsilonMin;
+            });
+
+            for (let i=1, len=data.length; i<len; i++) {
+                // Create a new Cluster when
+                // current node is smaller min and greater or equal max AND the node before is greater max
+                if((data[i].reachabilityDistance <= epsilonMax) &&
+                    (data[i-1].reachabilityDistance > epsilonMax)) {
+
+                    clusterContainer[i] = [];
+                    clusterContainer[i].push(data[i-1]);
+                    clusterContainer[i].push(data[i]);
+                    currentClusterToFill = i;
+                }
+
+                // add node to cluster when
+                // value is greater min and smaller or equal to max AND node before is smaller or equal max
+                if((data[i].reachabilityDistance <= epsilonMax) &&
+                    (data[i-1].reachabilityDistance <= epsilonMax)) {
+
+                    try {
+                        clusterContainer[currentClusterToFill].push(data[i]);
+                    } catch(e) {
+                        console.log(e);
+                        console.log(data[i]);
+                        console.log(data[i-1]);
+                    }
+
+                }
+            }
+
+            levelContainer[level] = clusterContainer;
+            epsilonMin += 0.2;
+            epsilonMax += 0.2;
+            level++;
+        }
+
+        console.log(levelContainer);
+
+
+
+
+    }
+
+
 
 }
