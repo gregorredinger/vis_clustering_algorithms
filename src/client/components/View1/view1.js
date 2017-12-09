@@ -121,14 +121,37 @@ export default class {
 
     drawReachabilityPlot() {
         colorCluster(this.store.epsilon);
-        const reachabilityPlot = new ReachabilityPlot(
+        this.reachabilityPlot = new ReachabilityPlot(
             document.querySelector('#view1_histogram')
         );
-        setupEpsSlider();
+        this.setupEpsSlider();
     }
 
     drawNetworkGraph() {
 
+    }
+
+    setupEpsSlider() {
+        let _this = this;
+        let range = document.getElementById("eps-slider"),
+            value = document.getElementById("eps-value");
+        let yaxis = document.getElementById("view1_histogram")
+                .getElementsByClassName("y axis").item(0),
+            xaxis = document.getElementById("view1_histogram")
+                .getElementsByClassName("x axis").item(0);
+
+
+        range.setAttribute("max", new Store().epsilon);
+        range.setAttribute("value", new Store().epsilon);
+        range.style.height = yaxis.getBoundingClientRect().height + "px";
+        range.style.marginBottom = xaxis.getBoundingClientRect().height + 10 + "px";
+
+        range.addEventListener('input', function(){
+            value.innerHTML = this.value;
+            _this.reachabilityPlot.updateEpsLine(this.value);
+            colorCluster(this.value);
+            updateColor();
+        });
     }
 
 }
@@ -136,7 +159,6 @@ export default class {
 export function highlight(datum){
 
     let darkerColor = d => d3.color(d.color).darker().toString();
-
 
     d3.selectAll("circle")
         .data(new Store().data)
@@ -173,25 +195,6 @@ export function unhighlight(datum){
             return d.color;
         })
     ;
-}
-
-function setupEpsSlider() {
-    let range = document.getElementById("eps-slider"),
-        value = document.getElementById("eps-value");
-    let yaxis = document.getElementById("view1_histogram")
-        .getElementsByClassName("y axis").item(0),
-        xaxis = document.getElementById("view1_histogram")
-            .getElementsByClassName("x axis").item(0);
-
-
-    range.setAttribute("max", new Store().epsilon);
-    range.setAttribute("value", new Store().epsilon);
-    range.style.height = yaxis.getBoundingClientRect().height + "px";
-    range.style.marginBottom = xaxis.getBoundingClientRect().height + 10 + "px";
-
-    range.addEventListener('input', function(){
-        value.innerHTML = this.value;
-    });
 }
 
 function colorCluster(newEps) {
@@ -241,4 +244,14 @@ function colorCluster(newEps) {
 
     })
 
+}
+
+function updateColor() {
+    d3.selectAll("circle")
+        .data(new Store().data)
+        .style('fill', function(d){return d.color});
+
+    d3.selectAll("rect")
+        .data(new Store().data)
+        .style('fill', function(d){return d.color});
 }

@@ -106,10 +106,16 @@ export default class ReachabilityPlot {
         this.plot.append("g")
                 .attr("transform", "translate(0, "+this.yScale(yPos)+")")
                 .append("line")
+                .attr("id", "epsLine")
                 .attr("x2", this.width - this.margin.right)
                 .style("stroke", "#c80032")
                 .style("stroke-width", "3px")
 
+    }
+
+    updateEpsLine(yPos) {
+        this.plot.select("#epsLine")
+            .attr("transform", "translate(0, "+this.yScale(yPos)+")")
     }
 
 }
