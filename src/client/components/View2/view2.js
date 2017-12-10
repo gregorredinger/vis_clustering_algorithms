@@ -15,6 +15,7 @@ export default class {
         this.widthOfContainer = document.getElementById('view2_spreadsheet').parentNode.getBoundingClientRect().width;
         this.heightOfContainer = document.getElementById('view2_spreadsheet').parentNode.getBoundingClientRect().height;
         this.store = new Store();
+        if (this.widthOfContainer === 0) { this.widthOfContainer = 500; }
 
     }
 
@@ -76,29 +77,108 @@ export default class {
 
     drawTree() {
 
-        let treeData =
-            {
-                "name": "Top Level",
-                "children": [
-                    {
-                        "name": "Level 2: A",
-                        "children": [
-                            { "name": "Son of A" },
-                            { "name": "Daughter of A" }
-                        ]
-                    },
-                    {
-                        "name": "Level 2: B",
-                        "children": [
-                            { "name": "Son of A" },
-                            { "name": "Daughter of A" },
-                            { "name": "Son of A" },
-                            { "name": "Daughter of A" }
-                        ]
-                    }
+        /*let treeData = {
+            "name": "Top Level",
+            "children": [
+                {
+                    "name": "Level 2: A",
+                    "children": [
+                        { "name": "Son of A" },
+                        { "name": "Daughter of A" }
+                    ]
+                },
+                {
+                    "name": "Level 2: B",
+                    "children": [
+                        { "name": "Son of A" },
+                        { "name": "Daughter of A" },
+                        { "name": "Son of A" },
+                        { "name": "Daughter of A" }
+                    ]
+                }
 
-                ]
-            };
+            ]
+        };*/
+
+        let levelContainer = this.createTreeDataLevelCluster();
+        let treeData = [];
+        let highestLevel = 0;
+
+        for(let [levelKey, levelValue] of Object.entries(levelContainer)) {
+            if(levelKey > highestLevel) { highestLevel = levelKey; }
+
+            for(let [key, value] of Object.entries(levelValue)) {
+                let max = Math.max(...levelValue[key].map(d => d.reachabilityDistance));
+                treeData.push({
+                    "parent": (levelValue[key].filter((d) => d.reachabilityDistance === max))[0],
+                    "children": levelValue[key].filter((d) => d.reachabilityDistance !== max),
+                    "level": levelKey
+                });
+            }
+        }
+        console.log(treeData);
+
+        // eliminate double entries in higher levels
+        for(let cluster of treeData) {
+            let parentClusterOfCurrentCluster = treeData.filter((d) => d.parent.name === cluster.parent.name && d.level > cluster.level );
+            if(parentClusterOfCurrentCluster.length === 1) {
+                let parentClusterChildren = parentClusterOfCurrentCluster[0].children;
+                let childEntriesToRemove = cluster.children;
+
+                // delete the clusters from the lower level in the higher level
+                // @see https://stackoverflow.com/questions/24304383/javascript-return-reference-to-array-item (Crowders Anser)
+                // @see https://stackoverflow.com/questions/47105483/remove-multiple-object-from-array-of-objects-using-filter
+                parentClusterOfCurrentCluster[0].children = parentClusterChildren.filter(function(obj) {
+                    return !this.has(obj.name);
+                }, new Set(childEntriesToRemove.map(obj => obj.name)));
+            }
+        }
+
+        console.log(treeData);
+
+        let treeDataFormatted = {
+            "name": "root",
+            "children": []
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*{
+            "name": "Top Level",
+            "children": [
+                {
+                    "name": "Level 2: A",
+                    "children": [
+                        { "name": "Son of A" },
+                        { "name": "Daughter of A" }
+                    ]
+                },
+                {
+                    "name": "Level 2: B",
+                    "children": [
+                        { "name": "Son of A" },
+                        { "name": "Daughter of A" },
+                        { "name": "Son of A" },
+                        { "name": "Daughter of A" }
+                    ]
+                }
+
+            ]
+        };*/
 
         // set the dimensions and margins of the diagram
         let margin = {top: 40, right: 90, bottom: 50, left: 90},
@@ -158,64 +238,68 @@ export default class {
             .style("text-anchor", "middle")
             .text(function(d) { return d.data.name; });
 
-        this.createTreeData();
     }
 
-    createTreeData() {
+    createTreeDataLevelCluster() {
+
+        let newEps = 1;
+        let data = new Store().data;
+        let inValley = false;
 
         let clusterContainer = {};
         let levelContainer = {};
         let level = 1;
         let currentClusterToFill = 0;
-        let epsilonMin = 0;
-        let epsilonMax = 0.2;
 
-        while(epsilonMax < this.store.epsilon) {
+        while(newEps <= this.store.epsilon) {
 
-            let data = this.store.data.filter( (d) => {
-                return d.reachabilityDistance > epsilonMin;
+            clusterContainer = {};
+
+            data.forEach(function (currentPoint, idx) {
+                let nextPoint = data[idx + 1];
+                // in case we reached the last point there is nothing to compare to we can just finish the loop.
+                if (!nextPoint) {
+                    return;
+                }
+
+                let currentReachabilityDist = (currentPoint.reachabilityDistance < newEps) ? currentPoint.reachabilityDistance : newEps,
+                    nextPointReachabilityDist = (nextPoint.reachabilityDistance < newEps) ? nextPoint.reachabilityDistance : newEps;
+
+                if (currentReachabilityDist === newEps) inValley = false;
+
+                if (inValley) {
+                    // if we are in a valley, just go through all the points and add them to current cluster
+                    clusterContainer[currentClusterToFill].push(data[idx]);
+                } else {
+
+                    // we are not in valley. we have to check if we are iterating through noise or reached the start of a valley
+                    if (currentReachabilityDist === newEps && nextPointReachabilityDist < currentReachabilityDist) {
+                        // we found a new valley
+                        inValley = true;
+                        // add current point to current cluster
+                        currentClusterToFill = idx; // the property name of the new cluster
+                        clusterContainer[idx] = [];
+                        clusterContainer[idx].push(data[idx]);
+                    } else if (currentReachabilityDist === newEps && nextPointReachabilityDist === newEps) {
+                        // we found a noise point
+
+                    } else {
+                        console.log("!!! No color assigend to point: ");
+                        console.log(currentPoint);
+                    }
+                }
             });
 
-            for (let i=1, len=data.length; i<len; i++) {
-                // Create a new Cluster when
-                // current node is smaller min and greater or equal max AND the node before is greater max
-                if((data[i].reachabilityDistance <= epsilonMax) &&
-                    (data[i-1].reachabilityDistance > epsilonMax)) {
-
-                    clusterContainer[i] = [];
-                    clusterContainer[i].push(data[i-1]);
-                    clusterContainer[i].push(data[i]);
-                    currentClusterToFill = i;
-                }
-
-                // add node to cluster when
-                // value is greater min and smaller or equal to max AND node before is smaller or equal max
-                if((data[i].reachabilityDistance <= epsilonMax) &&
-                    (data[i-1].reachabilityDistance <= epsilonMax)) {
-
-                    try {
-                        clusterContainer[currentClusterToFill].push(data[i]);
-                    } catch(e) {
-                        console.log(e);
-                        console.log(data[i]);
-                        console.log(data[i-1]);
-                    }
-
-                }
-            }
-
             levelContainer[level] = clusterContainer;
-            epsilonMin += 0.2;
-            epsilonMax += 0.2;
+            newEps += 1;
             level++;
+
         }
-
-        console.log(levelContainer);
-
-
-
+        return levelContainer;
 
     }
+
+
 
 
 

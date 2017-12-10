@@ -42,13 +42,13 @@ document.getElementById("calculate").addEventListener("click", (event) => {
     try {
 
         // TODO; test data, replace later with real data
-        /*
+
         store.input = [
             [0,0],[6,0],[-1,0],[0,1],[0,-1],
             [45,45],[45.1,45.2],[45.1,45.3],[45.8,45.5],[45.2,45.3],
             [50,50],[56,50],[50,52],[50,55],[50,51]
         ];
-        */
+        /*
         store.input = [
             [26.75,22.15  ],
             [29.8,22.15  ],
@@ -449,7 +449,7 @@ document.getElementById("calculate").addEventListener("click", (event) => {
             [15.6,9.45  ],
             [15.3,9.15  ],
             [15.1,9.55  ]
-        ];
+        ];*/
 
 
         if(Object.keys(store.input).length === 0) { throw "Please add a Json File with Data to start Calculation."; }
