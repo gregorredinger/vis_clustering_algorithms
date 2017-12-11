@@ -1,8 +1,11 @@
 import "./view1.scss"
 import Store from "../../store"
 import * as d3 from "d3";
+import d3Tip from "d3-tip";
 import { highlight, unhighlight } from "./view1";
 
+
+var tool_tip;
 
 export default class ReachabilityPlot {
 
@@ -31,6 +34,13 @@ export default class ReachabilityPlot {
         const svg = d3.select(this.element).append('svg');
         svg.attr('width',  this.width);
         svg.attr('height', this.height);
+
+        tool_tip = d3Tip()
+            .attr("class", "d3-tip")
+            .offset([-8, 0])
+            .html(function(d) { return "Name: " + d.name +"<br> Distance: " + d.reachabilityDistance.toFixed(2); });
+
+        svg.call(tool_tip);
 
         // we'll actually be appending to a <g> element
         this.plot = svg.append('g')
@@ -94,9 +104,11 @@ export default class ReachabilityPlot {
             .attr('y', function(d){return _this.yScale(d.reachabilityDistance);})
             .on('mouseover', function(point){
                 highlight(point);
+                tool_tip.show(point);
             })
             .on('mouseout', function(point){
                 unhighlight(point);
+                tool_tip.hide(point);
             });
 
     }
