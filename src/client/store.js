@@ -18,6 +18,7 @@ export default class {
         if(!instance){
             instance = this;
 
+            this.testDataset = false;
             this.newDataLoaded = true; // indicates if if create (true) or update (false) should be called in the view diagrams
 
             this.clusters = [];

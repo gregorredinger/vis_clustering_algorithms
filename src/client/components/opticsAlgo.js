@@ -33,9 +33,24 @@ export default class {
                 y: this.store.input[plotEntry[0]][1],
                 reachabilityDistance:  plotEntry[1] || this.store.epsilon,
                 name: plotEntry[0], // TODO: give the Point a better name
-                color: "" // TODO: implement color cluster assignment
+                color: "", // TODO: implement color cluster assignment
             });
         }
+
+        // append
+        if(this.store.testDataset) {
+            for(let entry of this.store.data) {
+                let irisName = "";
+                if(entry.name >= 0 && entry.name <=49) { irisName = "virginica"; }
+                if(entry.name >= 50 && entry.name <=99) { irisName = "versicolor"; }
+                if(entry.name >= 100 && entry.name <=149) { irisName = "setosa"; }
+                entry["iris"] = irisName;
+            }
+        }
+        console.log(this.store.data);
+
+
+
     }
 
 }

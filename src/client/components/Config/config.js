@@ -72,43 +72,40 @@ export default class {
 
         switch(dataset) {
             case "fisher_petal_dataset": {
+                this.store.testDataset = true;
                 let irisDatasetPetal = [IrisData.setosa.petal, IrisData.versicolor.petal, IrisData.virginica.petal];
                 let irisName = ["setosa", "versicolor", "virginica"];
-                this.store.data = [];
+                this.store.input = [];
                 let j = 2;
                 while(j >= 0) {
                     for(let i=0; i < irisDatasetPetal[j].len.length; i++) {
-                        this.store.data.push({
-                            sepalWidth: irisDatasetPetal[j].width[i],
-                            sepalLength: irisDatasetPetal[j].len[i]
-                        });
+                        this.store.input.push([
+                            irisDatasetPetal[j].width[i],
+                            irisDatasetPetal[j].len[i]
+                        ]);
                     }
                     j--;
                 }
-                // TODO: output test data remove later
-                console.log(this.store.data);
                 break;
             }
             case "fisher_sepal_dataset": {
+                this.store.testDataset = true;
                 let irisDatasetSepal = [IrisData.setosa.sepal, IrisData.versicolor.sepal, IrisData.virginica.sepal];
-                let irisName = ["setosa", "versicolor", "virginica"];
-                this.store.data = [];
+                this.store.input = [];
                 let j = 2;
                 while(j >= 0) {
                     for(let i=0; i < irisDatasetSepal[j].len.length; i++) {
-                        this.store.data.push({
-                            sepalWidth: irisDatasetSepal[j].width[i],
-                            sepalLength: irisDatasetSepal[j].len[i]
-                        });
+                        this.store.input.push([
+                            irisDatasetSepal[j].width[i],
+                            irisDatasetSepal[j].len[i]
+                        ]);
                     }
                     j--;
                 }
-                // TODO: output test data remove later
-                console.log(this.store.data);
                 break;
             }
             case "hierarchical_dataset": {
-                store.input = [
+                this.store.input = [
                     [26.75,22.15  ],
                     [29.8,22.15  ],
                     [31.55,21.1  ],
