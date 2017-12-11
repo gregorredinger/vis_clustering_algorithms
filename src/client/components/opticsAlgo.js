@@ -37,7 +37,7 @@ export default class {
             });
         }
 
-        // append
+        // append the correct name according to index in "test dataset" mode
         if(this.store.testDataset) {
             for(let entry of this.store.data) {
                 let irisName = "";
@@ -47,10 +47,8 @@ export default class {
                 entry["iris"] = irisName;
             }
         }
-        console.log(this.store.data);
-
-
-
+        // set test dataset to false again
+        this.testDataset = false;
     }
 
 }

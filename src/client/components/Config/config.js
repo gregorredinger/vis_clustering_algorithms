@@ -12,14 +12,6 @@ export default class {
 
     constructor() {
         this.store = new Store();
-
-
-
-
-        /*
-        *   Name: Blumenart, x: SepalBreite, y: SepalLänge
-            und einmal ein zweites datenset
-            Name: Blumenart, x: PetalBreite, y: PetalLänge*/
     }
 
     /**
@@ -68,11 +60,19 @@ export default class {
         }
     }
 
+    /**
+     * load test dataset in store.input after button click
+     *
+     * appending of the correct name (setosa, virginca,...) happens in opticsAlgo.js
+     *
+     * */
     testDatasetLoader(dataset) {
 
         switch(dataset) {
             case "fisher_petal_dataset": {
+                // set test data to true for appending correct iris name in opticsAlgo
                 this.store.testDataset = true;
+                // array for iterating over all three datasets
                 let irisDatasetPetal = [IrisData.setosa.petal, IrisData.versicolor.petal, IrisData.virginica.petal];
                 let irisName = ["setosa", "versicolor", "virginica"];
                 this.store.input = [];
