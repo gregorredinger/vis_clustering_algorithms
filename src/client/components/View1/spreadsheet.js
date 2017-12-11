@@ -18,7 +18,7 @@ export default class Spreadsheet {
     constructor() {
         this.store = new Store();
         // calculate the size of the parent node where the Spreadsheet gets inserted
-        this.widthOfContainer = (document.getElementById('view1_spreadsheet').getBoundingClientRect().width)*1.5; // workaround for some error returning wrong width
+        this.widthOfContainer = document.getElementById('view1_spreadsheet').getBoundingClientRect().width;
         this.heightOfContainer = document.getElementById('view1_spreadsheet').getBoundingClientRect().height;
         if (this.widthOfContainer === 0) { this.widthOfContainer = 1000; } // fallback if calc doesnt work
 
