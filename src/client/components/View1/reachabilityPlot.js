@@ -108,8 +108,8 @@ export default class ReachabilityPlot {
                 .append("line")
                 .attr("id", "epsLine")
                 .attr("x2", this.width - this.margin.right)
-                .style("stroke", "#c80032")
-                .style("stroke-width", "3px")
+                .style("stroke", "#5755d9")
+                .style("stroke-width", "2px")
 
     }
 
