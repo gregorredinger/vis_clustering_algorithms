@@ -151,10 +151,38 @@
 </div>
 
 <h2>Open Challenges and Problems</h2>
-<p>
-    TODO
-</p>
+<h3>Dendrograms in d3</h3>
+    <div>
+        <figure>
+            <img src="img/M3/RIdYg.png" alt="a dendrogram visualizing the cluster hierarchy">
+            <figcaption>a dendrogram visualizing the cluster hierarchy
+            </figcaption>
+        </figure>
+    </div>
+<p>M2 featured several visualizations utilizing cluster dendrograms. Unfortunatly there exist no easy to generate those
+with d3. The suggestion most often found, advises to use a visualization similar to what we called Graph- or Tree-View
+    in M2. Unfortunately this means to lose the information encoded by the single axis of a dendrogram, the &epsilon;-Axis.
+While a tree view still perserves the information on cluster hirarchies, it is not possible to decide on a possible
+    &epsilon;-cutoff with this form of visualization. An example of what is considered a dendrogram in the context of d3.js can
+be found here:</p>
+<a href="https://bl.ocks.org/mbostock/4063570">Cluster Dendrogram by Mike Bostock</a>
 
+<h3>d3 and javascript bundler</h3>
+<p>
+    we encountered several unsolved problems regarding the d3-library and the usage of javascript bundler like Babel or Webpack.
+    Relevant discussions can be found on Github:
+</p>
+<a href="https://github.com/d3/d3-brush/issues/9">brush.on("end", handle) seems to get raw "mouseup" events</a> <br/>
+<a href="https://gist.github.com/Willmo36/9c13e3128dd628292252">d3-tip with browserify and webpack</a>
+
+<p>While the problem with the d3-tip subpackaged seems to be solveable, the loose of brushing events still is a problem in our project
+    and meant to exclude the feature of a brush-selection in the reachability plot for now. <br/>
+    the d3-README states:</p>
+<blockquote>
+    # d3.event <br/>
+    [...]<br/>
+    If you use Babel, Webpack, or another ES6-to-ES5 bundler, be aware that the value of d3.event changes during an event! An import of d3.event must be a live binding, so you may need to configure the bundler to import from D3’s ES6 modules rather than from the generated UMD bundle; not all bundlers observe jsnext:main. Also beware of conflicts with the window.event global.
+</blockquote>
 
 <h2> References </h2>
 <p><cite>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander (1999). OPTICS: Ordering Points To Identify the Clustering Structure. ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60.</cite></p>
@@ -163,21 +191,21 @@
 <h2>Future Milestones</h2>
 <p>Requirements for M3 providing minimal functionality</p>
 <ul>
-    <li>4h - assesing the fitness of already existing OPTICS implementation or writing a own implementation of Optics</li>
-    <li>2h   - reachability plot with colored clusters</li>
-    <li>2h   - providing a option to load data from csv or json input</li>
-    <li>2h   - representing 2D-Data in an euclidean space</li>
-    <li>2h   - representing clustering results in a dendrogram</li>
+    <li>&#9989 - assesing the fitness of already existing OPTICS implementation or writing a own implementation of Optics</li>
+    <li>&#9989   - reachability plot with colored clusters</li>
+    <li>&#9989   - providing a option to load data from csv or json input</li>
+    <li>&#9989   - representing 2D-Data in an euclidean space</li>
+    <li>&#10060   - representing clustering results in a dendrogram - currently not possible</li>
 </ul>
 <p>Additional Requirements for M3/M4 resulting from this proposal</p>
 <ul>
-    <li>1h - adding a Brush to the reachibility plot</li>
-    <li>1h - adding a &epsilon;' slider to the reachability plot</li>
-    <li>4h - assesing the fitness of already existing Spreadsheet implementations for data editing</li>
-    <li>1h - representing clusters as a net</li>
-    <li>1h - representing cluster hierarchy as a graph</li>
-    <li>1h - decide on indices to as similarity coefficients</li>
-    <li>2h - Implement Similarity Barchart</li>
+    <li>&#10060 - adding a Brush to the reachibility plot - currently not possible</li>
+    <li>&#9989 - adding a &epsilon;' slider to the reachability plot</li>
+    <li>&#9989 - Spreadsheet for data editing</li>
+    <li>&#10008 - representing clusters as a net</li>
+    <li>&#10008 - representing cluster hierarchy as a graph</li>
+    <li>&#10008  - decide on indices to as similarity coefficients</li>
+    <li>&#10008  - Implement Similarity Barchart</li>
 </ul>
 
 <hr>
