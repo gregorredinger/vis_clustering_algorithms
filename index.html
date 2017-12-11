@@ -118,9 +118,18 @@
 
 
 <h3>Current Visualization Design</h3>
+
+<img src="img/m3_design/m3_1.png" alt="" width="700px" style="border: 1px solid black;">
 <p>
-   TODO:
+    Our Visualization is designed as a Single Page Application. In the Navigation Section we provide links to our Project Page (for more Information about our Ideas for the Visualization) and to our Github Page (for more Information about our Code).
+
+    The Application itself is divided into two Sections. The „Config“ Section is the Place, were a User can upload his Data and adjust the Optics Algorithm by changing the Parameters Epsilon and MinPts.
 </p>
+<img src="img/m3_design/m3_2.png" alt="" width="700px" style="border: 1px solid black;">
+<p>
+The „Analyze“ Section is the Place, where the User can examine his inserted Data.
+</p>
+<img src="img/m3_design/m3_3.png" alt="" width="700px" style="border: 1px solid black;">
 
 
 <h3>Iterating on use cases from milestone M2</h3>
@@ -142,7 +151,16 @@
 </div>
 
 <p>
-    Implementing a way to color the clusters depending on a epsilon
+    According to the suggestions we get on M2, we decided to make some major changes to our original design.
+</p>
+<p>
+    Our first change was the separation of inserting data and adjust the algorithm parameters from examining the algorithm results. So we separate this two tasks in a config page (inserting data and adjust the algorithm) and a analyze page(examining the algorithm results).
+</p>
+<p>
+    As suggested we abandoned the usage of drop down menus and use a histogram with a slider instead. According to the position of the slider (which represents the epsilon value) the histogram show the currently detected clusters in different colors. A horizontal line on the right side of the slider, which spans the whole length of the histogram, makes it easier to see, why the algorithm detects a cluster.
+</p>
+<p>
+    We mainly focused on using Dashboard 1 (Scatterplot, Histogram, Network Graph)from M2 for our design, but we replaced the network graph with a spreadsheet view of the algorithm results with colored rows, according to the cluster they belong to. This seems to be a better approach, because it provides a more in depth look at the cluster data.
 </p>
 
 <h2>Open Challenges and Problems</h2>
