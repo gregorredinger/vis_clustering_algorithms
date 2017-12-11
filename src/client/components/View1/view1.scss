@@ -22,9 +22,13 @@
   align-items: center;
 }
 
-#view1_network_graph {
-}
 
+#view1_spreadsheet {
+  color: black; // per default the handsontable spreadsheet color seems to be white, which is unfortunate because the table background is also white...
+}
+.handsontable .colorized {
+  background: #DCEDC8;
+}
 
 
 .range-slider {

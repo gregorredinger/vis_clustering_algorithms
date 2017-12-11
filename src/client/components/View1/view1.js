@@ -2,6 +2,7 @@ import "./view1.scss"
 import Store from "../../store"
 import * as d3 from "d3";
 import ReachabilityPlot from "./reachabilityPlot";
+import Spreadsheet from "./spreadsheet";
 
 /**
  * @module View1
@@ -13,6 +14,7 @@ export default class {
 
     constructor() {
         this.store = new Store();
+        this.spreadsheet = new Spreadsheet();
     }
 
 
@@ -95,7 +97,7 @@ export default class {
             })
             .on('mouseout', function(point){
                 unhighlight(point);
-            })
+            });
 
 
 
@@ -115,7 +117,8 @@ export default class {
 
     }
 
-    updateScatterplot() {
+    drawSpreadsheet() {
+        this.spreadsheet.draw();
     }
 
 
@@ -127,9 +130,6 @@ export default class {
         this.setupEpsSlider();
     }
 
-    drawNetworkGraph() {
-
-    }
 
     setupEpsSlider() {
         let _this = this;
@@ -139,6 +139,8 @@ export default class {
                 .getElementsByClassName("y axis").item(0),
             xaxis = document.getElementById("view1_histogram")
                 .getElementsByClassName("x axis").item(0);
+
+        _this.spreadsheet = this.spreadsheet; // make _this so spreadsheet is also available inside event listener
 
 
         range.setAttribute("max", new Store().epsilon);
@@ -151,6 +153,9 @@ export default class {
             _this.reachabilityPlot.updateEpsLine(this.value);
             colorCluster(this.value);
             updateColor();
+
+            // update spreadsheet
+            _this.spreadsheet.render();
         });
     }
 
@@ -241,9 +246,7 @@ function colorCluster(newEps) {
 
         }
 
-
-    })
-
+    });
 }
 
 function updateColor() {
