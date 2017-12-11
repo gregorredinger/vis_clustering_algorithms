@@ -139,25 +139,17 @@ The „Analyze“ Section is the Place, where the User can examine his inserted 
 
 <h3>Difference between Low-Fi-Prototypes and Hi-Fi-Prototype</h3>
 <p>
-    TODO
+According to the suggestions we get on M2, we decided to make some major changes to our original design.
 </p>
-<div>
-    <figure>
-        <img src="img/exercise_OPTICS.PNG" alt="schreibtischlauf DBSCAN" width="600px">
-        <figcaption>Fig1. - solved exercise for OPTICS using the Manhatten Distance. Every step resulted in an additional
-            bar being inserted into the histogram
-        </figcaption>
-    </figure>
-</div>
-
-<div>
-    <figure>
-        <img src="img/exercise_SHEET.PNG" alt="pen-and-paper excercise of the course Scientific Data Management">
-        <figcaption>Fig2. - pen-and-paper exercise given by Prof. Claudia Plant and Martin Perdacher to teach the DBSCAN
-            algorithm
-        </figcaption>
-    </figure>
-</div>
+<p>
+Our first change was the separation of inserting data and adjust the algorithm parameters from examining the algorithm results. So we separate this two tasks in a config page (inserting data and adjust the algorithm) and a analyze page(examining the algorithm results).
+</p>
+<p>
+As suggested we abandoned the usage of drop down menus and use a histogram with a slider instead. According to the position of the slider (which represents the epsilon value) the histogram show the currently detected clusters in different colors. A horizontal line on the right side of the slider, which spans the whole length of the histogram, makes it easier to see, why the algorithm detects a cluster.
+</p>
+<p>
+We mainly focused on using Dashboard 1 (Scatterplot, Histogram, Network Graph)from M2 for our design, but we replaced the network graph with a spreadsheet view of the algorithm results with colored rows, according to the cluster they belong to. This seems to be a better approach, because it provides a more in depth look at the cluster data.
+</p>
 
 <h2>Open Challenges and Problems</h2>
 <h3>Dendrograms in d3</h3>
