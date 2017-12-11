@@ -35,6 +35,9 @@ document.getElementById("sub-min-pts").addEventListener("click", () => { config.
 document.getElementById("add-min-pts").addEventListener("click", () => { config.changeConfigValues("minPts", "plus"); });
 document.getElementById("file").addEventListener("change", config.loadSelectedFile);
 
+document.getElementById("hierarchical_dataset").addEventListener("click", () => { config.testDatasetLoader("hierarchical_dataset"); });
+document.getElementById("fisher_petal_dataset").addEventListener("click", () => { config.testDatasetLoader("fisher_petal_dataset"); });
+document.getElementById("fisher_sepal_dataset").addEventListener("click", () => { config.testDatasetLoader("fisher_sepal_dataset"); });
 /*
 * Start Algorithm Calculations
 * **/
