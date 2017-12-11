@@ -98,7 +98,8 @@
 </table>
 
 <p>
-    <a href="https://gregorredinger.github.io/vis_clustering_algorithms/M1/index.html">M1 - first version of project proposal</a>
+    <a href="https://gregorredinger.github.io/vis_clustering_algorithms/M1/index.html">M1 - first version of project proposal</a> <br/>
+    <a href="https://gregorredinger.github.io/vis_clustering_algorithms/M2/index.html">M2 - low-fi Prototypes</a>
 </p>
 
 <h2>Project Specification</h2>
@@ -106,7 +107,7 @@
     In our Project we have the goal to provide a visualization for the OPTICS Clustering Algorithm.
     For a short introduction to the OPTICS algorithm see:
     <a href="https://en.wikipedia.org/wiki/OPTICS_algorithm">OPTICS algorithm - From Wikipedia, the free encyclopedia</a> <br/>
-    The OPTICS algorithm was first published in: </p><br/>
+    The OPTICS algorithm was first published in: </p>
     <p>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander:
         "OPTICS: Ordering Points To Identify the Clustering Structure."
         ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60. (1999)</p>
@@ -116,37 +117,20 @@
 </p>
 
 
-<h3>Shortcomings of existing Visualizations</h3>
+<h3>Current Visualization Design</h3>
 <p>
-    There hardly exist in-depth visualizations for the OPTICS Algorithm despite the extensive referring to visualization
-    in "OPTICS: Ordering Points To Identify the Clustering Structure". Most of the visualizations we found are static
-    depictions of clustering results, for the most part inspired by figures used for explaining the algorithm in the paper.
+   TODO:
 </p>
-<p>Example of interactive visualization of the Algorithm:</p>
-<ul>
-    <li>
-        <a href="https://www.youtube.com/watch?v=8kJjgowewOs">OPTICS Clustering Algorithm Simulation</a>
-    </li>
-</ul>
 
-<h3>Improving on existing Visualizations</h3>
+
+<h3>Iterating on use cases from milestone M2</h3>
 <p>
-    OPTICS builds upon an extension of the DBSCAN algorithm and is therefore part of the family of hierarchical clustering
-    algorithms. It should be possible to draw inspiration from well established visualization techniques for DBSCAN and
-    adapt them for the use with OPTICS.
+    TODO
 </p>
+
+<h3>Difference between Low-Fi-Prototypes and Hi-Fi-Prototype</h3>
 <p>
-    Our goal is to provide visualizations, that should ideally enable a user without prior knowledge of the algorithms
-    to use it with input data provided by them. It should be possible to compare clustering results with several different
-    combination of starting parameters with each other. Different visualizations should allow for a clear understanding of
-    the achieved results.
-</p>
-<h3>Proposed Solution</h3>
-<p>
-    In the course <a href="https://ufind.univie.ac.at/en/course.html?lv=052813&semester=2017S">052813 Scientific Data
-    Management</a>
-    OPTICS was taught by "schreibtischlauf"-assignments; Which means to run through the
-    algorithm on a piece of paper by hand.
+    TODO
 </p>
 <div>
     <figure>
@@ -157,11 +141,6 @@
     </figure>
 </div>
 
-<p>
-    This reachability plot in the form of a histogram is one way of visualizing the results of the OPTICS algorithm
-    with strong reference to the datastructure operations used by the implementation of the algorithm.
-</p>
-
 <div>
     <figure>
         <img src="img/exercise_SHEET.PNG" alt="pen-and-paper excercise of the course Scientific Data Management">
@@ -171,343 +150,15 @@
     </figure>
 </div>
 
-<h2>Goals of this Project</h2>
+<h2>Open Challenges and Problems</h2>
 <p>
-    Our overall goal is to perform a <strong>Design study</strong> by implementing a visualization that improves on
-    already existing visualizations of clustering algorithms and provides a way to interact with calculated clustering
-    results through the meaningful combination of different visual representations of input and output data.
-    To achieve this we aim to solve the following tasks:
-</p>
-
-<ul>
-    <li>Implement a visual representation of the OPTICS reachability plot</li>
-    <li>Implement several visual representation of clustering results in 2D euclidean space</li>
-    <li>Implement several 2D representation of the resulting cluster hierarchies</li>
-    <li>Implement visualizations to compare the similarity of clustering results with different starting parameters</li>
-    Possibly:
-    <li>Provide a visual representation of the seed list used by OPTICS and how it is maintained by the
-        algorithm</li>
-    <li>Provide mechanics to reduce the dimensions of the provided feature vectors</li>
-</ul>
-
-<p>
-    Achieving those goals should result in "application-like" visualizations of the OPTICS clustering algorithm, which
-    allows for the exploration of cluster structures in user provided datasets.
-</p>
-<h2>Proposed Visualizations</h2>
-
-<h3>2D euclidean Space</h3>
-<div>
-    <figure>
-        <img src="img/singleGraphs/clustering2DeuclideanSpace.png" alt="Clustering result in 2D euclidean space">
-        <figcaption>Graph 1. - Clustering result in 2D euclidean space
-        </figcaption>
-    </figure>
-</div>
-<p>
-    This is the most often used visualization of clustering results in a 2-dimensional space. datapoints in a coordinate
-    system are colored accordingly to their calculated cluster. It is easy to understand, even for users not familiar
-    with clustering algorithms and represents what a User usually expects when handling two dimensional data. On the
-    downside this visualization provides no information about how the results were achieved on its own. A User could
-    assume that the clustering is part of the dataset or that any possible clustering algorithm was used.
-
-</p>
-
-<div>
-    <figure>
-        <img src="img/singleGraphs/clustering2DreachabilityNet.png" alt="Clustering result in 2D euclidean space as reachability net">
-        <figcaption>Graph 2. - Clustering result in 2D euclidean space as reachability net
-        </figcaption>
-    </figure>
-</div>
-<p>
-    By utilising the fact that OPTICS uses rangequeries to sort datapoints into corresponding clusters, it is possible to
-    visualize the result as networks of reachability and therefore give rough illustration of cluster density.
-    Using this visualisation with different parameters for the query range makes it possible to observe the effects of
-    linkage and therefore has a high potential for visualizing cluster hierarchies when combined with interactive
-    parameter adjustment. Users who are not familiar with the ideas of single-linkage clustering or rangequeries
-    could be confused when confronted with lines in coordinate system they expect to show single points.
-</p>
-
-<h3>OPTICS Reachability Plot</h3>
-<div>
-    <figure>
-        <img src="img/singleGraphs/reachabilityWithParameterInput.png" alt="Reachability Plot with Parameter Input field">
-        <figcaption>Graph 3. - Reachability Plot as a Histogram
-        </figcaption>
-    </figure>
-</div>
-<p>
-    Illustrating the cluster-ordering by using a histogram as reachability plot is proposed in "OPTICS: Ordering Points To Identify the Clustering Structure".
-    Clusters are represented by "valleys" in the histogram; Subclusters are valleys in valleys. Not only does this visualization
-    provide a easily human readable format for cluster-ordering and hierarchy it is also connected to the inner workings
-    of the OPTICS algorithm. Users who are used to working with the OPTICS algorithm can draw conclusions on how to adjust
-    the starting parameters by looking at this histogram.
-</p>
-<div>
-    <figure>
-        <img src="img/singleGraphs/reachabilityWithParameterInput.png" alt="Reachability Plot with Parameter Input field">
-        <figcaption>Graph 4. - Reachability Plot as a Histogram with interactive &epsilon; cut off
-        </figcaption>
-    </figure>
-</div>
-<p>
-    Interactively assigning a new &epsilon;' smaller than the original &epsilon; by dragging a slider allows the
-    User to discover all density-based clustering results. Moving the slider further down splits big clusters into their
-    subclusters. For a meaningful visualizations this has to be linked with other graphs- most commonly with the
-    Clustering result in a 2D euclidean space (Graph 1.)
-</p>
-<div>
-    <figure>
-        <img src="img/singleGraphs/reachabilityPlotByAnkerstEtAl.PNG" alt="Illustration of the cluster-ordering">
-        <figcaption>Fig3. - Illustration of the cluster-ordering used by Ankerst et.al.
-        </figcaption>
-    </figure>
-</div>
-
-<h3>Cluster Hierarchies</h3>
-
-<div>
-    <figure>
-        <img src="img/singleGraphs/dendrogram.png" alt="Dendrogram of Cluster hierarchy">
-        <figcaption>Graph 5. - Dendrogram of Cluster hierarchy
-        </figcaption>
-    </figure>
-</div>
-<p>
-    Dendrograms are tree diagrams to illustrate clusters produced by hierarchical clustering. A distance axis allows the
-    User to see when a certain datapoint "joins" a cluster. It's similarity to genealogy illustrations (cladograms) makes it
-    easy to interpret even when the meaning of this distance axis unknown to the User. That a possible interpretation of the
-    distance axis isn't intuitiv is also it's biggest drawback.
-</p>
-
-<div>
-    <figure>
-        <img src="img/singleGraphs/hierarchyGraph.png" alt="Graph of Cluster hierarchy">
-        <figcaption>Graph 6. - Graph of Cluster hierarchy
-        </figcaption>
-    </figure>
-</div>
-<p>
-    Results of hierarchical clustering can also be visualized as graphs. Nodes represent Clusters, which are made up of
-    several sub-Nodes/-Clusters. This form of illustration is easily understandable without explanation or introduction.
-    On the downside it holds very little information and its main advantage is in organizing a huge number subclusters.
-</p>
-
-<div>
-    <figure>
-        <img src="img/singleGraphs/dendrogramDistanceMatrix.png" alt="Combining Dendrograms and a Heatmap">
-        <figcaption>Graph 7. - Combining Dendrograms and a Heatmap (<a href="https://stackoverflow.com/a/23046142">https://stackoverflow.com/a/23046142</a>)
-        </figcaption>
-    </figure>
-</div>
-<p>
-    For datasets represented by a matrix of values it can be insightful to cluster columns and rows separated from each other.
-    Combining the resulting dendrogram with a heatmap enables a User to look for associations between columns and rows by
-    identifying patterns in the heatmap - often rectangular areas which share a color.
-</p>
-
-<h3>Similarity of Clustering Results</h3>
-
-<div>
-    <figure>
-        <img src="img/singleGraphs/comparingResults.png" alt="Comparing Clustering Results">
-        <figcaption>Graph 8. - Comparing Clustering Results
-        </figcaption>
-    </figure>
-</div>
-<p>
-    When performing different clustering operations - possibly even by using different clustering algorithms - on the same
-    dataset it is necessary to compare those results for similar information. The Jaccard similarity coefficient is often
-    visualized by illustrating results as overlapping forms. The relationship between the area of overlap and the area of union
-    can be interpreted as similarity between two clustering results. While easy to understand and interpret those visualizations
-    can only communicate a limited amount of information and basically visualize a single coefficient between 0 and 1.
-</p>
-
-
-<div>
-    <figure>
-        <img src="img/singleGraphs/comparingClusteringResults.png" alt="Comparing Clustering Results as barchart">
-        <figcaption>Graph 9. - Comparing Clustering Results as barchart (Graphic by https://stackoverflow.com/a/23046142)
-        </figcaption>
-    </figure>
-</div>
-<p>
-    A simple barchart showing similarity coefficents for several algorithms runs compared to one specific clustering result
-    gives a fast to grasp visualization of the similarity to a high number of other results and not just one. Still it's
-    not possible to show similarity relationships between all results with each other, but the information density is greatly
-    improved compared to Graph. 8.
-</p>
-
-<h3>Representig Clustering in Results in the original data</h3>
-
-<div>
-    <figure>
-        <img src="img/singleGraphs/datasetTable.png" alt="Excel-like table view">
-        <figcaption>Graph 10. - input, edit and manage data
-        </figcaption>
-    </figure>
-</div>
-<p>
-    The most basic and common representation of datasets provided by Users are in the form of simple tables.
-    Not only is it possible to provide multidimensional feature vectors like this. Many real world data is gathered or stored
-    in form of comma seperated values. Most Users are already familiar with this format represented like this because of
-    the widespread use of Spreadsheet software.
-</p>
-
-<div>
-    <figure>
-        <img src="img/singleGraphs/datasetTableColored.png" alt="Excel-like table view colored">
-        <figcaption>Graph 11. - represent clustering results as spreadsheet overlay
-        </figcaption>
-    </figure>
-</div>
-<p>
-    Ideally the clustering result could be used to sort or at least visually encode the detailed spreadsheet view.
-    Possible comfort feature include to extract dendrogram- or clusterlables from this view to be used in other graphs.
-</p>
-
-<h2> Interface Design </h2>
-
-<h3>Dashboard 1 </h3>
-<p> This Dashboard consists of three Views. The Histogram View on the Bottom of the Page shows a Reachability-plot.
-    This is a 2D plot, with the ordering of the points on the x-Axis and the reachability distance on the y-Axis.
-    Because points belonging to a cluster have a low reachability distance to their nearest neighbor, the clusters show up as valleys in the reachability plot.  </p>
-
-<p> The Bubble and the Network View provide a better Overview for the Distribution of the Clusters.
-    </p>
-<img src="img/Dashboard_1_Blasen_Netzdarstellung.png" alt="" width="700px">
-
-<p> The Default Setting shows the Bubble and the Network View side by side, but it's also possible to enlarge one of the Views and hide the other.
-    This can be done by using the View Choosing Buttons on the Top of the Page (see Arrow 1).</p>
-
-<p> Another Interaction is to select specific Data in the Histogram via Brushing (see Arrow 3). The Data in the Bubble or Network View gets updated accordingly (see Arrow 2).
-    This interaction allows a fine-grained Analysis of the Data. </p>
-
-<p> It's also possible to adjust the two Parameters of the Optics Algorithm. Nearby Arrow 1 are two numerical Steppers to adjust the Parameters "Min pts" and "Epsilon".
-    The Epsilon Value is used to set a maximal Distance to limit the Complexity of the Algorithm.
-    The "Min pts" Value describes the number of Points required to form a Cluster.</p>
-
-<img src="img/dashboard1_expanded_bubble_view.png" alt="" width="700px">
-
-<h3>Dashboard 2 </h3>
-<p> This Dashboard also consists of three Views.
-    The Histogram View (Point 6) with the same Brushing Functionality as in Dashboard 1. <br />
-    A Tree Map View (Point 4). <br />
-    And a Graph View (Point 5). <br />
-    The Option to adjust different Views (Point 2) and the numerical Steppers to adjust the Parameters of the Algorithm also stays the same as in Dashboard 1. <br />
-    A new Functionality in this Dashboard is the Option to select whole Clusters to show or hide via a dropdown Menu (Point 1). This Functionality allows a finer selection
-    in the Histogram View by excluding all points of a Cluster. </p>
-<img src="img/dashboard2_details.png" alt="" width="700px">
-
-
-<h3>Dashboard 3 </h3>
-The third Dashboard is focused on showing how similar or not different Clusters are.
-<img src="img/Dashboard_3.png" alt="" width="700px">
-
-<p>
-    The first View in this Dashboard (see Point 1) offers a comparison Function between two Clusters. The Clusters can be selected via two Dropdown Menus, that shows
-    a list of all Clusters. The View shows the Similarity as a Number and as two Rectangles. The more the Rectangles are Overlapping, the higher is the Similarity between
-    the selected Clusters. This Information is also displayed as a Number on the bottom of the View. The Value that Indicates the Similarity ranges from 0 (totally different)
-    to 1 (the same), we decided to point this out by classify the Number with (Poor, Good, Excellent).
-</p>
-<p>
-    The second View (see Point 2) offers a Search Function for similar Clusters. The User can select a Cluster via a Dropdown Menu and the View shows a List of all Clusters
-    in descending order by their Similarity to the selected Cluster. The Similarity is expressed by the Length of a Line and the Value of the Similarity Index.
-    We also plan to add a Tooltip to this Index Value, that explains it's meaning in more detail.
-</p>
-<p>
-    The third View (see Point 5) shows an Overview of the Clusters in a Coordinate System. Different Clusters have different Colors.
-</p>
-<p>
-    The fourth View (see Point 4) shows a Comparison between the Cluster Sizes as a Cake Diagram. The User can select the Clusters he want to compare via
-    a Dropdown Menu (Selection of multiple or all Clusters is possible). This allows the User to get a fast Overview of the Cluster Sizes.
-    We also think about a Selection Function in the third View that allows the Selection of specific Parts of a Cluster and shows the Distribution
-    in the Cake Diagram.
-</p>
-
-<img src="img/dashboard3_detailed.png" alt="" width="700px">
-
-<h2> Storyboards </h2>
-
-<h3>Dashboard 1 - Insights in Students Performance </h3>
-A university Professor named John Snow tries to make sense of the performance of his Students.
-He creates a list with achieved assignment scores of for his courses..
-He could try to spot possible groups of in student's performance by looking at the data in a spreadsheet, but that would be too time consuming.
-<img src="img/dashboard1_expanded_bubble_view_epidemic%20analysis.png" alt="" width="700px">
-<p>
-    He imports his List as csv File and adjust the Epsilon and Minpts Parameters. At first he struggled a bit with the Meaning of this Variables, but by hovering over
-    them a tooltip with a detailed explanation pops up.
-    Then he decided that he just need the bubble View and enlarge this View by clicking on the View Selector Button on the top of the Page.
-    After the Application draw all Points on the View, he realized that there are only few, but big Clusters on the Map.
-    It seems that the clusters divide students in bad, average and good performing students.
-    So he select specific Clusters by brushing over the Histogram, which results in a clearer and easier to read View of the better perfoming students.
-    By adjusting the &epsilon;' slider he realizes that this cluster is made up of two subclusters.
-</p>
-<img src="img/Storyboard1/dashboard2_story.png" alt="" width="700px">
-<p>
-    In the Spreadsheet View the original name column with from his score spreadsheet is still accessible, but all the students
-    are marked in the corresponding color of subclusters he selected by combining brushing and the &epsilon;' slider.
-    After recognizing some names in each of the clusters Prof. Snow thinks that his good performing students are divided
-    into full-time students and students who work part time in an IT-related field.
-    He switches back to the bubble view and tries to find more clusters. Possible one or more with students who work in
-    other fields.
-</p>
-
-
-<h3>Dashboard 2 - Finding Customers with a high Income that lives in a specific Street </h3>
-<p>Frank, the Owner of a local Grocery Store wants to offer his Customers the Option of a 10 Minute Delivery, to compete with Amazon Fresh, that started recently in his City.
-    Because a 10 Minute Delivery is not possible in the whole City, he plan to restrict his Offer to a specific Street.
-    He also thinks that only People with a relatively high Income are willing to pay the Delivery Fee, so he want to limit his Marketing to these Kind of People.
-    Thankfully he had a List with the Income and the Residence of all People of his City as Csv. The Problem is to evaluate the List by himself would take way too much time,
-    so he decided to use our Application instead.
-</p>
-<img src="img/dashboard2_story.png" alt="" width="700px">
-<p>
-    At first he imports his List Data in our Application and adjust the Epsilon and Minpts Parameters. Like the Doctor before, the Tooltip Explanation help him to find
-    the correct Settings. He decided to stick with the default View Settings that shows them Side by Side, because he need both. After analyzing the Tree View (Point 3),
-    he decided to remove all Clusters with a low Income. He only select the Clusters with high Income over a Dropdown Menu (Point 4). The View updates and show the desired Results.
-    Now he searches in the Table View (Point 5) after all Entries with the Street, where he plan to offer his Delivery Service.
-    Because the Table View only Shows the Results of the selected Cluster, he can complete his search in no time.
+    TODO
 </p>
 
 
 <h2> References </h2>
 <p><cite>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander (1999). OPTICS: Ordering Points To Identify the Clustering Structure. ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60.</cite></p>
-<p><cite>Leskovec, J., Rajaraman, A., & Ullman, J. D. (2014). Mining of massive datasets. Cambridge university press.</cite></p>
-<p><cite>Lucidchart. Online-Software für die Erstellung von Flussdiagrammen & Grafiken jeder Art. (2017, October 26). Retrieved November 20, 2017, from https://www.lucidchart.com/pages/de</cite></p>
-<p><cite><a href="https://ufind.univie.ac.at/de/course.html?lv=052813&semester=2017S">052813 VU Scientific Data Management (2017S)</a>  - Course Material</cite></p>
-<h2> Implementation Details </h2>
 
-<h3>Javascript</h3>
-<p> We will use Javascript as our Programming Language.
-    We think its a good choice because there are many libraries and tools for building web Applications in this Language. </p>
-
-<h3>Babel</h3>
-<p> We will use Babel as a Preprocessor for our Js Code. This allows us to use ES6 Features(import/export, for of loops,...) and ensures that our Code will run in older Browser too.
-</p>
-
-<h3>Webpack</h3>
-<p> We will use Webpack as Module Bundler.  So we can structure our Code in a clean way by modularize it.
-    Webpack will then take care of stitching together all this modules (and their dependencies) into a single file in the correct order. </p>
-
-<h3>D3</h3>
-<p>Since D3 is the De-Facto-Standard for building Diagrams in Javascript, we decided to use it as our Tool of Choice. </p>
-
-<h3>JsDoc</h3>
-<p> To Document our Code we will use Jsdoc because it's very similar to Javadoc, a tool we already gained a lot of Experience with.</p>
-
-<h3>npm</h3>
-<p> To manage our Dependencies we will use the node package manager.
-    We think this is a good choice because it's much easier to manage all our Dependencies in one Place.
-    Npm will also take care of updating our Packages and warn us about deprecated Packages.</p>
-
-<h3>node + express</h3>
-<p> On the Server Side we will use node in Combination with express as Server. This Combination is very common and powerful for creating APIs.
-It's also a benefit that we can manage our Dependencies with npm on Client- and Server-side. </p>
-
-<h3>Jetbrains Webstorm</h3>
-<p> As IDE we use Webstorm because it's especially designed for Web Development and very reliable and powerful.</p>
 
 <h2>Future Milestones</h2>
 <p>Requirements for M3 providing minimal functionality</p>
