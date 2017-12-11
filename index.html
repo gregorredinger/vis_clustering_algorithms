@@ -157,11 +157,25 @@ The „Analyze“ Section is the Place, where the User can examine his inserted 
     Our first change was the separation of inserting data and adjust the algorithm parameters from examining the algorithm results. So we separate this two tasks in a config page (inserting data and adjust the algorithm) and a analyze page(examining the algorithm results).
 </p>
 <p>
-    As suggested we abandoned the usage of drop down menus and use a histogram with a slider instead. According to the position of the slider (which represents the epsilon value) the histogram show the currently detected clusters in different colors. A horizontal line on the right side of the slider, which spans the whole length of the histogram, makes it easier to see, why the algorithm detects a cluster.
+    As suggested we abandoned the usage of drop down menus and use a histogram with a slider instead. According to the
+    position of the slider (which represents the epsilon value) the histogram show the currently detected clusters in
+    different colors. A horizontal line on the right side of the slider, which spans the whole length of the histogram,
+    makes it easier to see, how a reachability plot has to be interpreted. The colorization can be seen in the scatterplot
+    and makes it easy to identify clusters in a 2-dimensional space.
 </p>
+<div>
+    <figure>
+        <img src="img/M3/epsilonSlider.gif" alt="a gif of our epsilon scented widget">
+        <figcaption>using the reachability plot as a scented widget
+        </figcaption>
+    </figure>
+</div>
 <p>
-    We mainly focused on using Dashboard 1 (Scatterplot, Histogram, Network Graph)from M2 for our design, but we replaced the network graph with a spreadsheet view of the algorithm results with colored rows, according to the cluster they belong to. This seems to be a better approach, because it provides a more in depth look at the cluster data.
+    playing with the &epsilon;' slider allows a user to explore the cluster hiararchies in a interactive way. The displayed value
+    for &epsilon;' allows the viewer to identify the exact cutoff at which clusters are divided into several subclusters or snap together
+    into bigger clusters.
 </p>
+
 
 <h2>Open Challenges and Problems</h2>
 <h3>Dendrograms in d3</h3>
