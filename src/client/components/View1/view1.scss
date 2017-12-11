@@ -4,12 +4,12 @@
   grid-template-rows: 55vh 30vh; /* height of the rows, every entry is a new row line e.g. 1 entry 1 line, 2 entries 2 lines,... */
   grid-gap: 0.5vw; /* first: grid-column-gap, second: grid-row-gap, or if equal write just 1 value*/
 
-  color: white;
+  color: #eeeeee;
 
 }
 
 .view1_item {
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 
 #view1_scatterplot {

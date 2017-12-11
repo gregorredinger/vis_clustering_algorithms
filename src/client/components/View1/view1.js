@@ -4,6 +4,9 @@ import * as d3 from "d3";
 import ReachabilityPlot from "./reachabilityPlot";
 import Spreadsheet from "./spreadsheet";
 
+var XepsInPx,
+    YepsInPx;
+
 /**
  * @module View1
  *
@@ -44,6 +47,8 @@ export default class {
         xScale.domain([d3.min(this.store.data, xValue)-1, d3.max(this.store.data, xValue)+1]);
         yScale.domain([d3.min(this.store.data, yValue)-1, d3.max(this.store.data, yValue)+1]);
 
+        XepsInPx = xScale(d3.min(this.store.data, xValue)-1 + this.store.epsilon) - xScale(d3.min(this.store.data, xValue)-1);
+        YepsInPx = yScale(d3.min(this.store.data, yValue)-1) - yScale(d3.min(this.store.data, yValue)-1 + this.store.epsilon);
 
         // add scatterplot svg
         let scatterplot = d3.select("#view1_scatterplot").select("svg")
@@ -165,12 +170,26 @@ export function highlight(datum){
 
     let darkerColor = d => d3.color(d.color).darker().toString();
 
-    d3.selectAll("circle")
+    let circle = d3.selectAll("circle")
         .data(new Store().data)
         .filter(function(d){
             return d === datum;
         })
         .style('fill', darkerColor);
+
+    let cx = circle.attr("cx"),
+        cy = circle.attr("cy");
+
+    circle.select(function() { return this.parentNode; })
+        .append("ellipse")
+        .attr("id", "rangeQuery")
+        .attr("rx", XepsInPx )
+        .attr("ry", YepsInPx )
+        .attr("cx", cx )
+        .attr("cy", cy )
+        .attr("stroke", "black")
+        .attr("stroke-width", 1)
+        .attr("fill", "none");
 
     d3.selectAll("rect")
         .data(new Store().data)
@@ -200,6 +219,8 @@ export function unhighlight(datum){
             return d.color;
         })
     ;
+
+    d3.selectAll("#rangeQuery").remove();
 }
 
 function colorCluster(newEps) {
