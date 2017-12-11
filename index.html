@@ -121,15 +121,49 @@
 
 <img src="img/m3_design/m3_1.png" alt="" width="700px" style="border: 1px solid black;">
 <p>
-    Our Visualization is designed as a Single Page Application. In the Navigation Section we provide links to our Project Page (for more Information about our Ideas for the Visualization) and to our Github Page (for more Information about our Code).
-
-    The Application itself is divided into two Sections. The „Config“ Section is the Place, were a User can upload his Data and adjust the Optics Algorithm by changing the Parameters Epsilon and MinPts.
+    Our Visualization is designed as a Single Page Application. In the Navigation Section we provide links to our Project
+    Page (for more Information about our Ideas for the Visualization) and to our Github Page (for more Information about our Code).
+    The Application itself is divided into two Sections. The „Config“ Section is the Place, were a User can upload his
+    Data and adjust the Optics Algorithm by changing the Parameters Epsilon and MinPts.
 </p>
 <img src="img/m3_design/m3_2.png" alt="" width="700px" style="border: 1px solid black;">
 <p>
 The „Analyze“ Section is the Place, where the User can examine his inserted Data.
 </p>
 <img src="img/m3_design/m3_3.png" alt="" width="700px" style="border: 1px solid black;">
+<p>
+Using the reachability plot as a scented widget allows the user to use a slider to set a &epsilon;' interactivly. The selected
+    cutoff colors the shown data to differentiate the clusters at this &epsilon;'-value. Coloring a reachability plot is usually
+    not a feature included with implementations of the optics-algorithm. It is assumed that a user knows how to interpret
+    a reachability plot and therefore doesn't need such a visual help. However we implemented a function to color the data points
+    in a reasonable manner, which supports up to 20 clusters.
+    The colorization can also be seen in the scatterplot and makes it easy to identify clusters in a 2-dimensional space.
+</p>
+<div>
+    <figure>
+        <img src="img/M3/epsilonSlider.gif" alt="a gif of our epsilon scented widget">
+        <figcaption>using the reachability plot as a scented widget
+        </figcaption>
+    </figure>
+</div>
+<p>
+    playing with the &epsilon;' slider allows a user to explore the cluster hiararchies in a interactive way. The displayed value
+    for &epsilon;' allows the viewer to identify the exact cutoff at which clusters are divided into several subclusters or snap together
+    into bigger clusters.
+</p>
+<p>
+    Both, the scatterplot and the reachability plot provide a highlighting function on mouse over. The selected data point
+    changes its color to a darker tone to allow identification of the position in both views. Additionally the range query
+    radius used by the OPTICS algorithm is shown in the scatterplot. A tooltip in the reachability plot shows the calculated
+    reachability distance for the highlighted point.
+</p>
+<div>
+    <figure>
+        <img src="img/M3/tooltip_rangeQuery.PNG" alt="highlighting a datapoint">
+        <figcaption>linking scatter- and reachability-plot with a highlighting function
+        </figcaption>
+    </figure>
+</div>
 
 
 <h3>Iterating on use cases from milestone M2</h3>
@@ -176,22 +210,8 @@ Use Case 1 - Finding Customers with a high Income that lives in a specific Stree
     As suggested we abandoned the usage of drop down menus and use a histogram with a slider instead. According to the
     position of the slider (which represents the epsilon value) the histogram show the currently detected clusters in
     different colors. A horizontal line on the right side of the slider, which spans the whole length of the histogram,
-    makes it easier to see, how a reachability plot has to be interpreted. The colorization can be seen in the scatterplot
-    and makes it easy to identify clusters in a 2-dimensional space.
+    makes it easier to see, how a reachability plot has to be interpreted.
 </p>
-<div>
-    <figure>
-        <img src="img/M3/epsilonSlider.gif" alt="a gif of our epsilon scented widget">
-        <figcaption>using the reachability plot as a scented widget
-        </figcaption>
-    </figure>
-</div>
-<p>
-    playing with the &epsilon;' slider allows a user to explore the cluster hiararchies in a interactive way. The displayed value
-    for &epsilon;' allows the viewer to identify the exact cutoff at which clusters are divided into several subclusters or snap together
-    into bigger clusters.
-</p>
-
 
 <h2>Open Challenges and Problems</h2>
 <h3>Dendrograms in d3</h3>
