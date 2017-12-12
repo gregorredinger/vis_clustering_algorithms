@@ -18,7 +18,7 @@ export default class Spreadsheet {
     constructor() {
         this.store = new Store();
         // calculate the size of the parent node where the Spreadsheet gets inserted
-        this.widthOfContainer = document.getElementById('view1_spreadsheet').getBoundingClientRect().width;
+        //this.widthOfContainer = document.getElementById('view1_spreadsheet').getBoundingClientRect().width; auto calculation dont work correctly, because of some issue with handsontable module
         this.heightOfContainer = document.getElementById('view1_spreadsheet').getBoundingClientRect().height;
         if (this.widthOfContainer === 0) { this.widthOfContainer = 1000; } // fallback if calc doesnt work
 
@@ -69,7 +69,7 @@ export default class Spreadsheet {
                 }
             ],
             stretchH: 'all',
-            width: this.widthOfContainer, // gets pre-calculated in the constructor, takes a integer value
+            width: 600, // hardcoded, not pre-calculated in the constructor because some issue with handsontable
             autoWrapRow: true,
             height: this.heightOfContainer, // gets pre-calculated in the constructor, takes a integer value
             rowHeaders: true,
