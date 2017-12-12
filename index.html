@@ -222,11 +222,12 @@ Use Case 1 - Finding Customers with a high Income that lives in a specific Stree
             </figcaption>
         </figure>
     </div>
-<p>M2 featured several visualizations utilizing cluster dendrograms. Unfortunatly there exist no easy to generate those
+<p>M2 featured several visualizations utilizing cluster dendrograms. Unfortunatly there exist no easy way to generate those
 with d3. The suggestion most often found, advises to use a visualization similar to what we called Graph- or Tree-View
     in M2. Unfortunately this means to lose the information encoded by the single axis of a dendrogram, the &epsilon;-Axis.
-While a tree view still perserves the information on cluster hirarchies, it is not possible to decide on a possible
-    &epsilon;-cutoff with this form of visualization. An example of what is considered a dendrogram in the context of d3.js can
+While a tree view still perserves the information on cluster hierarchies, it is not possible to decide on a possible
+    &epsilon;-cutoff with this form of visualization. Additionally we lose the possibility to link our &epsilon;'-Slider with the dendrogram.
+    An example of what is considered a dendrogram in the context of d3.js can
 be found here:</p>
 <a href="https://bl.ocks.org/mbostock/4063570">Cluster Dendrogram by Mike Bostock</a>
 
@@ -235,9 +236,10 @@ be found here:</p>
     we encountered several unsolved problems regarding the d3-library and the usage of javascript bundler like Babel or Webpack.
     Relevant discussions can be found on Github:
 </p>
-<a href="https://github.com/d3/d3-brush/issues/9">brush.on("end", handle) seems to get raw "mouseup" events</a> <br/>
-<a href="https://gist.github.com/Willmo36/9c13e3128dd628292252">d3-tip with browserify and webpack</a>
-
+<ul>
+<li><a href="https://github.com/d3/d3-brush/issues/9">brush.on("end", handle) seems to get raw "mouseup" events</a></li>
+<li><a href="https://gist.github.com/Willmo36/9c13e3128dd628292252">d3-tip with browserify and webpack</a></li>
+</ul>
 <p>While the problem with the d3-tip subpackaged seems to be solveable, the loose of brushing events still is a problem in our project
     and meant to exclude the feature of a brush-selection in the reachability plot for now. <br/>
     the d3-README states:</p>
@@ -246,7 +248,10 @@ be found here:</p>
     [...]<br/>
     If you use Babel, Webpack, or another ES6-to-ES5 bundler, be aware that the value of d3.event changes during an event! An import of d3.event must be a live binding, so you may need to configure the bundler to import from D3’s ES6 modules rather than from the generated UMD bundle; not all bundlers observe jsnext:main. Also beware of conflicts with the window.event global.
 </blockquote>
-
+<p>
+    A possible solution could be to forgo the use of webpack. As restructuring our project for this would be a time
+    consuming task we decided to keep this option in mind for M4 and remove the reachability brush for now.
+</p>
 <h2> References </h2>
 <p><cite>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander (1999). OPTICS: Ordering Points To Identify the Clustering Structure. ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60.</cite></p>
 
@@ -260,7 +265,7 @@ be found here:</p>
     <li>&#9989   - representing 2D-Data in an euclidean space</li>
     <li>&#10060   - representing clustering results in a dendrogram - currently not possible</li>
 </ul>
-<p>Additional Requirements for M3/M4 resulting from this proposal</p>
+<p>Additional Requirements for M3/M4 resulting from our M2 proposal</p>
 <ul>
     <li>&#10060 - adding a Brush to the reachibility plot - currently not possible</li>
     <li>&#9989 - adding a &epsilon;' slider to the reachability plot</li>
@@ -270,7 +275,18 @@ be found here:</p>
     <li>&#10008  - decide on indices to use as similarity coefficients</li>
     <li>&#10008  - Implement Similarity Barchart</li>
 </ul>
+<p>M3 requirement of 4 visualization techniques descussed in the lecture</p>
+<ul>
+    <li>&#9989 - hierarchical exploration <br/>
+        combining scatter-, reachability-plot and the tableview with the &epsilon;' slider allows to explore all cluster hierarchies hidden in one OPTICS result</li>
+    <li>&#9989 - scented widget <br/>
+        &epsilon;' slider in the reachability plot</li>
+    <li>&#9989 - tooltips <br/>
+        highlighting points in the reachability plot show additional information via a tooltip and visualizes the rangequery in the scatterplot</li>
+    <li>&#10008 - brushing & linking <br/>
+        see "Open Challenges and Problems"</li>
 
+</ul>
 <hr>
 
 <h3>Separation of Tasks between Group Members for this Milestone</h3>
