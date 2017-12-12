@@ -5,6 +5,7 @@ global config css values
 $padding_between_fields: 2.5rem 0 3rem 0;
 
 
+
 /**************************
 css for the epsilon & min pts fields
 **************************/
@@ -33,8 +34,8 @@ input[type=number] {
   font-size: 1.2em;
   text-transform: uppercase;
   text-align: center;
-  color: #93504C;
-  border: 2px #93504C solid;
+  color: #5755d9;
+  border: 2px #5755d9 solid;
   background: none;
   outline: none;
   pointer-events: none;
@@ -61,8 +62,8 @@ span.spinner > .add {
   font-weight: 700;
   font-size: 1.2em;
   line-height: 33px;
-  color: #93504C;
-  border: 2px #93504C solid;
+  color: #5755d9;
+  border: 2px #5755d9 solid;
   border-right: 0;
   border-radius: 2px 0 0 2px;
   cursor: pointer;
@@ -75,7 +76,7 @@ span.spinner > .add {
 
 span.spinner > .add {
   top: 0;
-  border: 2px #93504C solid;
+  border: 2px #5755d9 solid;
   border-left: 0;
   border-radius: 0 2px 2px 0;
 }
@@ -100,3 +101,16 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
   width: 150px;
   height: 50px;
 }
+
+
+#test_data_button_wrapper {
+  margin: auto;
+  padding: $padding_between_fields;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50px;
+}
+
