@@ -80,8 +80,8 @@ export default class {
                 while(j >= 0) {
                     for(let i=0; i < irisDatasetPetal[j].len.length; i++) {
                         this.store.input.push([
-                            irisDatasetPetal[j].width[i],
-                            irisDatasetPetal[j].len[i]
+                            irisDatasetPetal[j].width[i]*10,    // *10 to convert cm to mm
+                            irisDatasetPetal[j].len[i]*10
                         ]);
                     }
                     j--;
@@ -96,8 +96,8 @@ export default class {
                 while(j >= 0) {
                     for(let i=0; i < irisDatasetSepal[j].len.length; i++) {
                         this.store.input.push([
-                            irisDatasetSepal[j].width[i],
-                            irisDatasetSepal[j].len[i]
+                            irisDatasetSepal[j].width[i]*10,    // *10 to convert cm to mm
+                            irisDatasetSepal[j].len[i]*10
                         ]);
                     }
                     j--;

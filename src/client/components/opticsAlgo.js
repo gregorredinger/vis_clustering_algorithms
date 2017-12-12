@@ -26,12 +26,19 @@ export default class {
         // make sure the store.data is empty before adding the elements of the new calculation
         this.store.data = [];
 
+        let distance = dist => {
+            if (typeof dist != 'undefined')
+                return dist;
+            else return new Store().epsilon;
+        };
+
         for(let plotEntry of this.store.plot) {
             this.store.data.push({
+
                 // plotEntry[0] == returns the input entry, the current plot entry is referring to
                 x: this.store.input[plotEntry[0]][0],
                 y: this.store.input[plotEntry[0]][1],
-                reachabilityDistance:  plotEntry[1] || this.store.epsilon,
+                reachabilityDistance:  distance(plotEntry[1]),
                 name: plotEntry[0], // TODO: give the Point a better name
                 color: "", // TODO: implement color cluster assignment
             });
