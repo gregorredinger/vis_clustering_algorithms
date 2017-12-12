@@ -170,12 +170,12 @@ Using the reachability plot as a scented widget allows the user to use a slider 
 
 
 <h3>Iterating on use cases from milestone M2</h3>
-Use Case 1 - Finding Customers with a high Income that lives in a specific Street
+Use Case 1 - Finding Customers with a high Income that lives in a specific street
 <p>
     Frank, the owner of a local grocery store wants to offer his customers the option of a 10 Minute delivery,
     to compete with Amazon Fresh, that started recently in his city. Because a 10 minute delivery is not possible in the whole city,
     he plan to restrict his offer to a specific street. He also thinks that only people with a relatively high income are willing to pay the delivery fee,
-    so he want to limit his marketing to these kind of people. Thankfully he had a list with the income and the residence of all people of his city as csv.
+    so he want to limit his marketing to these kind of people. Thankfully he had a list with the income and the residence of all people of his city as json.
     The problem is to evaluate the list by himself would take way too much time, so he decided to use our application instead.
 </p>
 
@@ -187,6 +187,25 @@ Use Case 1 - Finding Customers with a high Income that lives in a specific Stree
     in the top-right of the scatterplot.  Now he searches in the spreadsheet view (right-top) after all entries with the street,
     where he plan to offer his delivery service. Because all clusters are colored in the table view, he can complete his search in no time.
 </p>
+<p>
+    Use Case 2 - Distinguish the species of flowers
+</p>
+<p>
+    Mr Fisher is the principal of a high school and he plan to offer some tutoring classes to his pupils, but because his budget is limited,
+    he is only able to build a limited number of that classes. So he decided to only offer them in disciplines where many pupils have problems.
+    He had a list of his pupils and their grades and analyzes them with our Application.
+</p>
+<p>
+    He uploads the json file and click calculate. Then he switches to the analyze tab. He doesn't need help during this workflow, because the concept
+    "first config then analyze" seems very natural and logical to him. He adjust the epsilon value with the histogram view and examine the
+    clusters in the scatterplot. He decided to examine the clusters even further and switch to the spreadsheet. The Rows are colored in
+    the cluster colors so he is able to find the list of pupils, belonging to a specific cluster really fast.
+</p>
+<p>
+    Now he knows which pupils had problems in specific disciplines and where he can offer tutoring classes with the highest efficiency.
+</p>
+
+
 
 
 
