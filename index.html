@@ -115,7 +115,33 @@
     The paper can be found online at: <br/>
     <a href="http://www.dbs.informatik.uni-muenchen.de/Publikationen/Papers/OPTICS.pdf">http://www.dbs.informatik.uni-muenchen.de/Publikationen/Papers/OPTICS.pdf</a>
 </p>
-
+<p>
+    As suggested in the grading for M2 we decided to offer several preselected datasets. The dataset used in the following
+    screenshots is a mockup dataset, that features several cluster arrangements, which need an hierarchical clustering solution
+    to get right. With this dataset it's easy to explain how hierarchical clustering works and how the results have to interpreted.
+    As this is a dataset specifically designed to show off hierarchical clustering it's easy to achieve perfect results.
+</p>
+<p>
+    To demonstrate the benefits of our visualization approach in a more realistic setting we included two different 2D-Interpretations
+    of <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Fisher's Iris flower data set</a> published in 1936
+    under the title "The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis".
+    The dataset features three clusters corresponding to the species Iris setosa, Iris virginica and Iris versicolor.
+    While Iris setosa can be easily distinguished from the two other species, the clusters of Iris virginica and Iris versicolor are
+    interwoven. This usually leads to results where those two are interpreted as one big cluster. Although OPTICS is unable to produce perfect
+    or good results for this dataset our visualization approach allows a user to easily identify that the "big" cluster holds more information
+    than the OPTICS result suggests. By interactively exploring the parameter space for &epsilon; the user is able to see that strict interpretations of
+    what a cluster should be, lead to a dense area in the "big" cluster. This dense area usually corresponds to Iris versicolor or
+    Iris virginica. With enough patience it is even possible to find a &epsilon;' where both species can be distinguished with the disadvantage of interpreting many points as noise.
+    While those clustering results are still far from perfect our visualization allows the user to assume that the result may be unsatisfactory and even gives hints
+    what subspace or subset of the data should be examined with other categorization techniques.
+</p>
+<div>
+    <figure>
+        <img src="img/M3/Iris_dataset_scatterplot.png" alt="the two iris dataset interpretations provided by our application">
+        <figcaption>the two 2D interpretations of the Iris dataset provided by our Application marked in red
+        </figcaption>
+    </figure>
+</div>
 
 <h3>Current Visualization Design</h3>
 
@@ -283,7 +309,7 @@ be found here:</p>
 </p>
 <h2> References </h2>
 <p><cite>Mihael Ankerst, Markus M. Breunig, Hans-Peter Kriegel, Jörg Sander (1999). OPTICS: Ordering Points To Identify the Clustering Structure. ACM SIGMOD international conference on Management of data. ACM Press. pp. 49–60.</cite></p>
-
+<p><cite>R. A. Fisher (1936). "The use of multiple measurements in taxonomic problems". Annals of Eugenics. 7 (2): 179–188.</cite></p>
 
 <h2>Future Milestones</h2>
 <p>Requirements for M3 providing minimal functionality</p>
