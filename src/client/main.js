@@ -15,6 +15,11 @@ tabby.init();
 
 
 /*
+* Workaround for a issue with wrong positioning of grid elements (huge gap between scatterplot and table after recalculate of the page)
+* **/
+document.getElementById("config_workaround").addEventListener("click", () => { location.reload(); });
+
+/*
 * store
 * **/
 let store = new Store();

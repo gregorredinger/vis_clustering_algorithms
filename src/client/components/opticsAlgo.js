@@ -40,7 +40,7 @@ export default class {
                 y: this.store.input[plotEntry[0]][1],
                 reachabilityDistance:  distance(plotEntry[1]),
                 name: plotEntry[0], // TODO: give the Point a better name
-                color: "", // TODO: implement color cluster assignment
+                color: "",
             });
         }
 
