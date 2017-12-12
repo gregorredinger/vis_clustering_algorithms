@@ -50,8 +50,8 @@ export default class {
             let fileReader = new FileReader();
             fileReader.addEventListener("load", () => {
                 let file = JSON.parse(fileReader.result);
+                if(!Array.isArray(file)) { alert("The dataset must have the form: [ [], [],... ]. You can download a dataset in the correct form here: " + window.location.host + "/hierarchical_test_data.json"); }
                 new Store().input = file; // create new Store, because there is some scope problem with func in func, but since store is a singleton this is no problem
-                console.log(file);
             });
             if(event.target.files[0].type !== "application/json") { throw "Filetype not allowed, expected application/json get " + (event.target.files[0].type ? event.target.files[0].type : "unknown"); }
             fileReader.readAsText(event.target.files[0]);
