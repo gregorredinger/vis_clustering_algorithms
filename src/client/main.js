@@ -49,7 +49,7 @@ document.getElementById("fisher_sepal_dataset").addEventListener("click", () => 
 document.getElementById("calculate").addEventListener("click", (event) => {
     try {
 
-        if(Object.keys(store.input).length === 0) { alert("Please add a json file or select a test data set, by clicking on one of the buttons below, to start calculation. You can download a dataset in the correct form here:" + window.location.host + "/hierarchical_test_data.json"); }
+        if(Object.keys(store.input).length === 0) { alert("Please add a json file or select a test data set, by clicking on one of the buttons below, to start calculation. You can download a dataset in the correct form here: https://gregorredinger.github.io/vis_clustering_algorithms/dist/hierarchical_test_data.json"); }
 
         // calculate data with optics
         let optics = new Optics(); // wrapper for optics lib

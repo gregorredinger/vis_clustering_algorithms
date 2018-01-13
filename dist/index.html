@@ -39,39 +39,53 @@
     <div data-tabs-pane class="tabs-pane active" id="config">
         <!-- start config tab content-->
 
-        <!-- epsilon value chooser-->
-        <form>
-            <p>Epsilon</p>
-            <span class="spinner">
-                <span id="sub-epsilon" class="sub">-</span>
-                <input id="epsilon" type="number" min="0" max="100" value="2">
-                <span id="add-epsilon" class="add">+</span>
-            </span>
-        </form>
-        <!-- minPts value chooser-->
-        <form>
-            <p>MinPts</p>
-            <span class="spinner">
-                <span id="sub-min-pts" class="sub">-</span>
-                <input id="min-pts" type="number" min="0" max="100" value="2">
-                <span id="add-min-pts" class="add">+</span>
-            </span>
-        </form>
+            <!-- epsilon value chooser-->
+            <div class="epsilon_chooser" >
+            <form>
+                <p>Epsilon<br />
+                The maximum distance (radius).</p>
+                <span class="spinner">
+                    <span id="sub-epsilon" class="sub">-</span>
+                    <input id="epsilon" type="number" min="0" max="100" value="2">
+                    <span id="add-epsilon" class="add">+</span>
+                </span>
+            </form>
+            </div>
+            <!-- minPts value chooser-->
+        <div class="minpts_chooser" >
+            <form>
+                <p>MinPts<br />
+                 The number of points required to form a cluster.</p>
+                <span class="spinner">
+                    <span id="sub-min-pts" class="sub">-</span>
+                    <input id="min-pts" type="number" min="0" max="100" value="2">
+                    <span id="add-min-pts" class="add">+</span>
+                </span>
+            </form>
+        </div>
         <!-- file upload-->
-        <form>
-            <p> Upload Data </p>
-            <input type="file" id="file" name="file">
-        </form>
+        <div class="file_upload_form" >
+            <form>
+                <p>Upload a file with json data... </p>
+                <input type="file" id="file" name="file">
+            </form>
+        </div>
 
         <!-- buttons for test datasets -->
-        <div id="test_data_button_wrapper">
-        <button id="hierarchical_dataset" class="btn btn-lg">hierarchical clustering dataset</button>
-        <button id="fisher_petal_dataset" class="btn btn-lg">Fisher Iris Petal</button>
-        <button id="fisher_sepal_dataset" class="btn btn-lg">Fisher Iris Sepal</button>
+        <div class="test_data_wrapper">
+            <div id="test_data_button_wrapper">
+            <p>or choose a test dataset.</p>
+            <button id="hierarchical_dataset" class="btn btn-lg">hierarchical clustering dataset</button>
+            <button id="fisher_petal_dataset" class="btn btn-lg">Fisher Iris Petal</button>
+            <button id="fisher_sepal_dataset" class="btn btn-lg">Fisher Iris Sepal</button>
+            </div>
         </div>
 
         <div id="calculate_wrapper">
-            <button id="calculate" class="btn btn-lg">calculate</button>
+            <div id="calculate">
+                <p>When you finished adjusting the MinPts, Epsilon values and submit or upload a dataset click here.</p>
+                <button class="btn btn-lg">calculate</button>
+            </div>
         </div>
 
         <!-- end config tab content-->

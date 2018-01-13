@@ -2,8 +2,56 @@
 global config css values
  ********************/
 
-$padding_between_fields: 2.5rem 0 3rem 0;
+$padding_between_fields: 1rem 0 1rem 0;
+$border_config_grid: 1px solid #5755d9;
 
+#config {
+  display: grid; /* enable grid for view1 items (the three graphs) */
+  grid-template-columns: 50vw 50vw; /* number of columns and size*/
+  grid-template-rows: 30vh 33vh; /* height of the rows, every entry is a new row line e.g. 1 entry 1 line, 2 entries 2 lines,... */
+  grid-gap: 0.5vw; /* first: grid-column-gap, second: grid-row-gap, or if equal write just 1 value*/
+
+}
+
+.epsilon_chooser {
+  //background-color: #33aaff; colors just for testing the size of the grid
+  border: $border_config_grid;
+}
+
+.minpts_chooser {
+  //background-color: darkred;
+  border: $border_config_grid;
+}
+
+.file_upload_form {
+  //background-color: #6cb31d;
+  border: $border_config_grid;
+}
+
+.test_data_wrapper {
+  //background-color: #93504C;
+  border: $border_config_grid;
+}
+
+#test_data_button_wrapper {
+  margin: auto;
+  padding: $padding_between_fields;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50px;
+}
+
+// calculate button
+#calculate_wrapper {
+  grid-column: 1 / 3;
+}
+
+#calculate {
+  text-align: center;
+}
 
 
 /**************************
@@ -23,6 +71,7 @@ form {
 form p {
   text-align: center;
 }
+
 
 input[type=number] {
   float: left;
@@ -90,27 +139,4 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
   -webkit-appearance: none;
 }
 
-// calculate button
-#calculate_wrapper {
-  margin: auto;
-  padding: $padding_between_fields;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 150px;
-  height: 50px;
-}
-
-
-#test_data_button_wrapper {
-  margin: auto;
-  padding: $padding_between_fields;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 50%;
-  height: 50px;
-}
 
