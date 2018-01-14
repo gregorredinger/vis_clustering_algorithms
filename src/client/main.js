@@ -40,9 +40,9 @@ document.getElementById("sub-min-pts").addEventListener("click", () => { config.
 document.getElementById("add-min-pts").addEventListener("click", () => { config.changeConfigValues("minPts", "plus"); });
 document.getElementById("file").addEventListener("change", config.loadSelectedFile);
 
-document.getElementById("hierarchical_dataset").addEventListener("click", () => { config.testDatasetLoader("hierarchical_dataset"); });
-document.getElementById("fisher_petal_dataset").addEventListener("click", () => { config.testDatasetLoader("fisher_petal_dataset"); });
-document.getElementById("fisher_sepal_dataset").addEventListener("click", () => { config.testDatasetLoader("fisher_sepal_dataset"); });
+document.getElementById("fisher_petal_dataset").addEventListener("click", () => { config.testDatasetLoader("fisher_petal_dataset"); openTestDatasetPreview() });
+document.getElementById("hierarchical_dataset").addEventListener("click", () => { config.testDatasetLoader("hierarchical_dataset"); openTestDatasetPreview() });
+document.getElementById("fisher_sepal_dataset").addEventListener("click", () => { config.testDatasetLoader("fisher_sepal_dataset"); openTestDatasetPreview() });
 /*
 * Start Algorithm Calculations
 * **/
@@ -70,3 +70,18 @@ document.getElementById("calculate").addEventListener("click", (event) => {
         (console.error || console.log).call(console, e.stack || e);
     }
 });
+
+
+/**
+ * Test Dataset Preview Handler
+ * triggered by second function in test dataset event listener
+ * css can be found in config.scss
+ * TODO: maybe put this code in config later
+ * */
+document.getElementById("closebtn").addEventListener("click", () => { closeTestDatasetPreview(); });
+function openTestDatasetPreview() {
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("preview_dataset_size").textContent = "Number of Entries: " + store.input.length;
+    document.getElementById("preview_dataset_content").textContent = JSON.stringify(store.input, null, 2);
+}
+function closeTestDatasetPreview() { document.getElementById("mySidenav").style.width = "0"; }
