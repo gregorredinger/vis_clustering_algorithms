@@ -71,7 +71,6 @@ document.getElementById("calculate").addEventListener("click", (event) => {
     }
 });
 
-
 /**
  * Test Dataset Preview Handler
  * triggered by second function in test dataset event listener
@@ -85,3 +84,5 @@ function openTestDatasetPreview() {
     document.getElementById("preview_dataset_content").textContent = JSON.stringify(store.input, null, 2);
 }
 function closeTestDatasetPreview() { document.getElementById("mySidenav").style.width = "0"; }
+
+

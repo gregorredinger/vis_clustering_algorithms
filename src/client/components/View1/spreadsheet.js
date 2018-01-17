@@ -39,6 +39,7 @@ export default class Spreadsheet {
         }
 
 
+        let spreadsheetInfo = "The spreadsheet shows the entire dataset and the clusters as colored rows. ";
 
         let hotElement = document.querySelector('#view1_spreadsheet'); // node where the spreadsheet gets inserted
         let hotElementContainer = hotElement.parentNode; // necessary for drawing the spreadsheet (if this value is not there, the spreadsheet is not visible)
@@ -60,7 +61,7 @@ export default class Spreadsheet {
                     type: 'text',
                 },
                 {
-                    data: 'name',
+                    data: this.store.testDataset ? 'iris' : 'name', // append correct name (if iris data 'iris' else number)
                     type: 'text',
                 },
                 {
@@ -69,6 +70,13 @@ export default class Spreadsheet {
                 }
             ],
             stretchH: 'all',
+            comments: true,
+            cell: [{ row: 0, col: 0, comment: {value: spreadsheetInfo}},
+                { row: 0, col: 1, comment: {value: spreadsheetInfo}},
+                { row: 0, col: 2, comment: {value: spreadsheetInfo}},
+                { row: 0, col: 3, comment: {value: spreadsheetInfo}},
+                { row: 0, col: 4, comment: {value: spreadsheetInfo}}
+            ],
             width: 600, // hardcoded, not pre-calculated in the constructor because some issue with handsontable
             autoWrapRow: true,
             height: this.heightOfContainer, // gets pre-calculated in the constructor, takes a integer value
@@ -89,7 +97,7 @@ export default class Spreadsheet {
                     cellProperties.renderer = rowColorRenderer;
                 }
                 return cellProperties;
-            }
+            },
         };
 
         this.hot = new Handsontable(hotElement, hotSettings);
