@@ -49,14 +49,6 @@ export default class Spreadsheet {
             // 'data' means the key of the propertie in the obj, 'type' means the datatype e.g. numeric, text,...
             columns: [
                 {
-                    data: 'x',
-                    type: 'numeric',
-                },
-                {
-                    data: 'y',
-                    type: 'numeric',
-                },
-                {
                     data: 'reachabilityDistance',
                     type: 'text',
                 },
@@ -70,6 +62,8 @@ export default class Spreadsheet {
                 }
             ],
             stretchH: 'all',
+            columnSorting: true,
+            sortIndicator: true,
             comments: true,
             cell: [{ row: 0, col: 0, comment: {value: spreadsheetInfo}},
                 { row: 0, col: 1, comment: {value: spreadsheetInfo}},
@@ -83,8 +77,6 @@ export default class Spreadsheet {
             rowHeaders: true,
             // define the names of the column headers
             colHeaders: [
-                'x',
-                'y',
                 'Reachability Distance',
                 'name',
                 'color'
