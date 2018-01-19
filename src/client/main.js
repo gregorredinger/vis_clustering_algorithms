@@ -56,7 +56,7 @@ document.getElementById("calculate").addEventListener("click", (event) => {
         optics.init(); // calculate data and save them in store.js
 
         // print data from store
-        store.print();
+        //store.print();
 
         view1.drawReachabilityPlot();
         view1.drawScatterplot();

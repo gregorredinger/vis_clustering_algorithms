@@ -39,8 +39,10 @@ export default class {
                 x: this.store.input[plotEntry[0]][0],
                 y: this.store.input[plotEntry[0]][1],
                 reachabilityDistance:  distance(plotEntry[1]),
+                reachabilityDistanceShort: distance(plotEntry[1]).toFixed(2),
                 name: plotEntry[0], // TODO: give the Point a better name
                 color: "",
+                progress: parseInt((distance(plotEntry[1]) * 100) / this.store.epsilon)
             });
         }
 

@@ -24,6 +24,8 @@ export default class Spreadsheet {
 
     }
 
+    /*
+    * progressBar.max wäre bei uns das Epsilon. progressBar.value wäre die reachabilityDistance*/
     draw() {
 
         // colors the table rows
@@ -38,6 +40,16 @@ export default class Spreadsheet {
             }
         }
 
+        function epsilonToReachabilityDistanceRenderer(instance, td, row, col, prop, value, cellProperties) {
+            Handsontable.renderers.TextRenderer.apply(this, arguments);
+            td.innerHTML = '';
+            var div = document.createElement('DIV');
+            div.className = 'process';
+            div.style.width = value + 'px';
+            div.style.background = "black";
+            td.appendChild(div);
+        }
+
 
         let spreadsheetInfo = "The spreadsheet shows the entire dataset and the clusters as colored rows. You can sort the spreadsheet by clicking" +
             " on the column headers. First click = ascending, second click = descending, third click = default";
@@ -50,8 +62,12 @@ export default class Spreadsheet {
             // 'data' means the key of the propertie in the obj, 'type' means the datatype e.g. numeric, text,...
             columns: [
                 {
-                    data: 'reachabilityDistance',
+                    data: 'reachabilityDistanceShort',
                     type: 'text',
+                },
+                {
+                    data: 'progress',
+                    renderer: epsilonToReachabilityDistanceRenderer
                 },
                 {
                     data: this.store.testDataset ? 'iris' : 'name', // append correct name (if iris data 'iris' else number)
@@ -78,9 +94,11 @@ export default class Spreadsheet {
             rowHeaders: true,
             // define the names of the column headers
             colHeaders: [
-                'Reachability Distance',
+                '',
+                'reachability-distance',
                 'name',
                 'color'
+
             ],
             // iterate over all cells
             cells: function (row, col, prop, td) {
