@@ -123,9 +123,9 @@ export default class {
     }
 
     drawSpreadsheet() {
-        this.spreadsheet.draw();
+        let data = this.store.data;
+        this.spreadsheet.draw(data);
     }
-
 
     drawReachabilityPlot() {
         colorCluster(this.store.epsilon);

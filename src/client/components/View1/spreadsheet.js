@@ -96,8 +96,4 @@ export default class Spreadsheet {
 
     }
 
-    /** when data changes programmatically call this func to update spreadsheet */
-    render() {
-        this.hot.render();
-    }
 }

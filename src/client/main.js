@@ -84,5 +84,3 @@ function openTestDatasetPreview() {
     document.getElementById("preview_dataset_content").textContent = JSON.stringify(store.input, null, 2);
 }
 function closeTestDatasetPreview() { document.getElementById("mySidenav").style.width = "0"; }
-
-
