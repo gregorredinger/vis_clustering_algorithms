@@ -39,7 +39,8 @@ export default class Spreadsheet {
         }
 
 
-        let spreadsheetInfo = "The spreadsheet shows the entire dataset and the clusters as colored rows. ";
+        let spreadsheetInfo = "The spreadsheet shows the entire dataset and the clusters as colored rows. You can sort the spreadsheet by clicking" +
+            " on the column headers. First click = ascending, second click = descending, third click = default";
 
         let hotElement = document.querySelector('#view1_spreadsheet'); // node where the spreadsheet gets inserted
         let hotElementContainer = hotElement.parentNode; // necessary for drawing the spreadsheet (if this value is not there, the spreadsheet is not visible)
