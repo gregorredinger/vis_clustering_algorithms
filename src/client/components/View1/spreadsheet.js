@@ -35,19 +35,28 @@ export default class Spreadsheet {
             let node = td.parentNode; // get the node of the row where the respective color entrie lives
             if(node !== null) { // some nodes are null, so we avoid iterateing over them
                 for(let childNode of node.childNodes) { // iterate over all cells of a row and make them the color of the color cell in this row
-                    childNode.style.background = value; // td.parentNode dont work for some reason
+                    // childNode.style.background = value; // td.parentNode dont work for some reason
                 }
             }
         }
 
         function epsilonToReachabilityDistanceRenderer(instance, td, row, col, prop, value, cellProperties) {
-            Handsontable.renderers.TextRenderer.apply(this, arguments);
-            td.innerHTML = '';
-            var div = document.createElement('DIV');
-            div.className = 'process';
-            div.style.width = value + 'px';
-            div.style.background = "black";
-            td.appendChild(div);
+            var progressDiv = document.createElement('div');
+            progressDiv.className += " bar";
+            var progressBar = document.createElement('div');
+            progressBar.className += " bar-item";
+            progressBar.style["width"] = value+"%";
+
+            let color = instance.getDataAtRow(row)[1];
+            let reachbilityValue = instance.getDataAtRow(row)[0];
+
+            progressBar.style["background"] = color;
+            progressBar.style["text-align"] = "left";
+            progressBar.innerText = reachbilityValue;
+
+            progressDiv.appendChild(progressBar);
+            td.textContent = '';
+            td.appendChild(progressDiv);
         }
 
 
@@ -66,19 +75,20 @@ export default class Spreadsheet {
                     type: 'text',
                 },
                 {
+                    data: 'color',
+                    type: 'text',
+                },
+                {
                     data: 'progress',
                     renderer: epsilonToReachabilityDistanceRenderer
                 },
                 {
                     data: this.store.testDataset ? 'iris' : 'name', // append correct name (if iris data 'iris' else number)
                     type: 'text',
-                },
-                {
-                    data: 'color',
-                    type: 'text',
                 }
+
             ],
-            stretchH: 'all',
+            stretchH: 'last',
             columnSorting: true,
             sortIndicator: true,
             comments: true,
@@ -100,6 +110,7 @@ export default class Spreadsheet {
                 'color'
 
             ],
+            colWidths: [0.1,0.1,400,100],
             // iterate over all cells
             cells: function (row, col, prop, td) {
                 let cellProperties = {};
