@@ -1,3 +1,17 @@
+### HOW TO START THE APPLICATION
+
+There are two ways, to run our project. The first and easier one, which you most likely 
+want to use for grading our project, is to use the SimpleHTTPServer we already used for A3.
+To use this approach:
+
+1. Open a terminal and navigate to vis_clustering_algorithms/dist
+2. Run "python -m SimpleHTTPServer" in this directory
+3. The Application is available under localhost:8000
+
+The second one is using node.js and requires the 
+installation of this tool on your machine. This approach is described in the section prerequisites
+and usage. 
+
 
 ### INTRODUCTION
 
