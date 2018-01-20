@@ -154,7 +154,7 @@ export default class {
         range.setAttribute("max", epsilon);
         range.setAttribute("value", epsilon);
         range.style.height = yaxis.getBoundingClientRect().height + "px";
-        range.style.marginBottom = xaxis.getBoundingClientRect().height + 10 + "px";
+        range.style.marginBottom = xaxis.getBoundingClientRect().height + 20 + "px";
 
         range.addEventListener('input', function(){
             let currentVal = parseFloat(this.value);

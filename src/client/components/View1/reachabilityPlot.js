@@ -51,6 +51,17 @@ export default class ReachabilityPlot {
         this.addAxes();
         this.addBars();
         this.addEpsLine(this.store.epsilon);
+
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("transform", "translate("+ (this.width/2) +","+(this.height-(this.margin.bottom/3))+")")  // centre below axis
+            .text("cluster-order of the data points");
+
+        svg.append("text")
+            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ (this.margin.left/3) +","+(this.height/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+            .text("Reachability Distance");
+
     }
 
     createScales() {
@@ -72,7 +83,7 @@ export default class ReachabilityPlot {
         // this is all pretty straightforward D3 stuff
         const xAxis = d3.axisBottom()
             .scale(this.xScale)
-            .tickValues(this.xScale.domain().filter(function(d, i) { return !(i % 20); }));
+            .tickValues([]);
 
         const yAxis = d3.axisLeft()
             .scale(this.yScale);
@@ -115,19 +126,29 @@ export default class ReachabilityPlot {
 
     addEpsLine(yPos) {
 
-        this.plot.append("g")
-                .attr("transform", "translate(0, "+this.yScale(yPos)+")")
-                .append("line")
+        let linegroup = this.plot.append("g")
+                .attr("transform", "translate(-30, "+this.yScale(yPos)+")");
+
+        linegroup.append("text")
+            .attr("id", "epsLineText")
+            .attr("text-anchor", "middle")
+            .attr("transform", "translate(-10,5)")
+            .text("ε'");
+
+        linegroup.append("line")
                 .attr("id", "epsLine")
-                .attr("x2", this.width - this.margin.right)
+                .attr("x2", this.width - this.margin.right + 30)
                 .style("stroke", "#5755d9")
                 .style("stroke-width", "2px")
 
     }
 
     updateEpsLine(yPos) {
+        this.plot.select("#epsLineText")
+            .attr("transform", "translate(-10, "+(this.yScale(yPos)+5)+")");
+
         this.plot.select("#epsLine")
-            .attr("transform", "translate(0, "+this.yScale(yPos)+")")
+            .attr("transform", "translate(0, "+this.yScale(yPos)+")");
     }
 
 }
