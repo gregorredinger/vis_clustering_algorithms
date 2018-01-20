@@ -105,12 +105,11 @@ export default class Spreadsheet {
             // define the names of the column headers
             colHeaders: [
                 '',
-                'reachability-distance',
-                'name',
-                'color'
-
+                'reachability-dist debug',
+                'Reachability Distance',
+                this.store.testDataset ? 'species' : 'name'
             ],
-            colWidths: [0.1,0.1,400,100],
+             colWidths: [0.1,0.1,400,100],
             // iterate over all cells
             cells: function (row, col, prop, td) {
                 let cellProperties = {};
