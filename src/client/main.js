@@ -79,8 +79,17 @@ document.getElementById("calculate").addEventListener("click", (event) => {
  * */
 document.getElementById("closebtn").addEventListener("click", () => { closeTestDatasetPreview(); });
 function openTestDatasetPreview() {
+    // prepare pretty output
+    let prettyOutput = `[ <br />`;
+    for(let entry of store.input) {
+       prettyOutput += `[${entry[0]}] [${entry[1]}] <br />`;
+    }
+    prettyOutput += `]`;
+
+    // append preview to dom
     document.getElementById("mySidenav").style.width = "300px";
     document.getElementById("preview_dataset_size").textContent = "Number of Entries: " + store.input.length;
-    document.getElementById("preview_dataset_content").textContent = JSON.stringify(store.input, null, 2);
+    console.log(store.input);
+    document.getElementById("preview_dataset_content").innerHTML = prettyOutput;
 }
 function closeTestDatasetPreview() { document.getElementById("mySidenav").style.width = "0"; }
