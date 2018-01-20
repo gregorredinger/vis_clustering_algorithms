@@ -38,7 +38,7 @@ export default class ReachabilityPlot {
         tool_tip = d3Tip()
             .attr("class", "d3-tip")
             .offset([-8, 0])
-            .html(function(d) { return "Name: " + d.name +"<br> Distance: " + d.reachabilityDistance.toFixed(2); });
+            .html(function(d) { return "Datapoint: " + d.name +"<br> Distance: " + d.reachabilityDistance.toFixed(2); });
 
         svg.call(tool_tip);
 
