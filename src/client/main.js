@@ -12,7 +12,7 @@ import tabby from "Tabby"; // tab manager
 import "Tabby/dist/css/tabby.min.css";
 // initialize tab manager
 tabby.init();
-
+import Tooltip from "tooltip.js"
 
 /*
 * Workaround for a issue with wrong positioning of grid elements (huge gap between scatterplot and table after recalculate of the page)
@@ -93,3 +93,31 @@ function openTestDatasetPreview() {
     document.getElementById("preview_dataset_content").innerHTML = prettyOutput;
 }
 function closeTestDatasetPreview() { document.getElementById("mySidenav").style.width = "0"; }
+
+
+/**
+ * helptext for the views
+ *
+ * */
+new Tooltip(document.getElementsByClassName("fab_scatterplot")[0], {
+    placement: 'bottom', // or bottom, left, right, and variations
+    title: `The scatterplot shows the data points of the dataset.
+    Like the reachability plot, the scatterplot provide a highlighting function on mouse over.
+    The selected data point changes its color to a darker tone to allow identification of the position in both views.
+    Additionally the range query radius used by the OPTICS algorithm is shown in the scatterplot.`
+});
+
+new Tooltip(document.getElementsByClassName("fab_spreadsheet")[0], {
+    placement: 'left', // or bottom, left, right, and variations
+    title: `The spreadsheet shows the entire dataset and the clusters as colored rows.
+     You can sort the spreadsheet by clicking on the column headers.
+     First click = ascending, second click = descending, third click = default`,
+});
+
+new Tooltip(document.getElementsByClassName("fab_histogram")[0], {
+    placement: 'left', // or bottom, left, right, and variations
+    title: `This view shows a reachability Plot for the elements of the dataset.
+    The elements that belongs to the same cluster, have the same color (we support up to 20 clusters).
+    On the left side of the reachability Plot is a slider for the ε' value.
+    By playing with the ε' slider you can explore the cluster hiararchies in a interactive way.`
+});

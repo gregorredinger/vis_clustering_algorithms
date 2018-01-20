@@ -1,3 +1,45 @@
+/*
+Floating Action Buttons
+
+Usage:
+<button class="fab_add">?</button>
+
+*/
+
+@mixin fab_basic_style {
+  position: fixed;
+  width:50px;
+  height:50px;
+  border-radius:100%;
+  background: #5755d9;
+  color: #2C312E;
+  border:none;
+  outline:none;
+  font-size: 1.7rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  z-index: 999;
+}
+
+.fab_scatterplot {
+  @include fab_basic_style;
+  left: 25rem;
+  top: 4.5rem;
+}
+
+.fab_spreadsheet {
+  @include fab_basic_style;
+  top: 4.5rem;
+  right: 0.5rem;
+}
+
+.fab_histogram {
+  @include fab_basic_style;
+  right: 2rem;
+  bottom: 2rem;
+}
+
 .view1 {
   display: grid; /* enable grid for view1 items (the three graphs) */
   grid-template-columns: auto auto; /* number of columns and size*/
@@ -81,8 +123,10 @@
 }
 
 
-
-
+// style tooltip help text
+.tooltip {
+  background-color: #5755d9;
+}
 /*
 CSS GRID CHEATSHEET
 https://www.w3schools.com/css/css_grid.asp
