@@ -63,13 +63,13 @@ export default class {
             scatterplot.select("g:nth-child(2)")
                 .attr("class", "y axis")
                 .call(yAxis)
-                .enter().append("text")
+                .append("text")
                 .attr("class", "label")
                 .attr("transform", "rotate(-90)")
                 .attr("y", 6)
                 .attr("dy", ".71em")
                 .style("text-anchor", "end")
-                .text("y")
+                .text("y-Axis")
                 .attr("fill", "black");
 
             // x-axis
@@ -77,12 +77,12 @@ export default class {
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + height + ")")
                 .call(xAxis)
-                .enter().append("text")
+                .append("text")
                 .attr("class", "label")
                 .attr("x", width + 10)
                 .attr("y", -10)
                 .style("text-anchor", "end")
-                .text("x")
+                .text("x-Axis")
                 .attr("fill", "black");
         }
 
